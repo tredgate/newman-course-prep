@@ -1,0 +1,15 @@
+{
+	"id": "a0635f24-4e35-4d12-8b2c-bd9f3ab57e4d",
+	"values": [
+		{
+			"key": "testPassword",
+			"value": "Heslo",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2026-01-12T12:49:17.877Z",
+	"_postman_exported_using": "Postman/11.80.0"
+}

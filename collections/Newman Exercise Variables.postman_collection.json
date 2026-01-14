@@ -1,0 +1,325 @@
+{
+	"info": {
+		"_postman_id": "96897157-32f0-4e96-8a71-dfbf7130147e",
+		"name": "Newman Exercise Variables",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18237009",
+		"_collection_link": "https://prednasky.postman.co/workspace/Newman-Course~f4274440-adbb-4ada-adce-8caf96c3fb61/collection/18237009-96897157-32f0-4e96-8a71-dfbf7130147e?action=share&source=collection_link&creator=18237009"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const username = pm.variables.replaceIn('{{$randomUserName}}');",
+							"const email = pm.variables.replaceIn('{{$randomExampleEmail}}');",
+							"",
+							"pm.environment.set(\"tegb_username\", username);",
+							"pm.environment.set(\"tegb_email\", email);",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const username = pm.variables.get(\"tegb_username\");",
+							"const email = pm.variables.get(\"tegb_email\");",
+							"const body = pm.response.json();",
+							"",
+							"pm.environment.set(\"user_id\", body.userId);",
+							"",
+							"pm.test(\"Response status is 201\", () => {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response body have property 'username'\", () => {",
+							"    pm.expect(body).to.have.property(\"username\");",
+							"});",
+							"",
+							"pm.test(\"Response body have property 'email'\", () => {",
+							"    pm.expect(body).to.have.property(\"email\");",
+							"});",
+							"",
+							"pm.test(\"Response body have property 'userId'\", () => {",
+							"    pm.expect(body).to.have.property(\"userId\");",
+							"});",
+							"",
+							"pm.test(\"Response body have property 'createdAt'\", () => {",
+							"    pm.expect(body).to.have.property(\"createdAt\");",
+							"});",
+							"",
+							"pm.test(\"Response body have property 'updatedAt'\", () => {",
+							"    pm.expect(body).to.have.property(\"updatedAt\");",
+							"});",
+							"",
+							"pm.test(\"Response body have property 'active'\", () => {",
+							"    pm.expect(body).to.have.property(\"active\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Property 'username' is string\", () => {",
+							"    pm.expect(body.username).to.be.a(\"string\");",
+							"});",
+							"",
+							"pm.test(\"Property 'email' is string\", () => {",
+							"    pm.expect(body.email).to.be.a(\"string\");",
+							"});",
+							"",
+							"pm.test(\"Property 'userId' is number\", () => {",
+							"    pm.expect(body.userId).to.be.a(\"number\");",
+							"});",
+							"",
+							"pm.test(\"Property 'createdAt' is string\", () => {",
+							"    pm.expect(body.createdAt).to.be.a(\"string\");",
+							"});",
+							"",
+							"pm.test(\"Property 'active' is number\", () => {",
+							"    pm.expect(body.active).to.be.a(\"number\");",
+							"});",
+							"",
+							"pm.test(\"Response body.username have correct value\", () => {",
+							"    pm.expect(body.username).to.eql(username);",
+							"});",
+							"",
+							"pm.test(\"Response body.email have correct value\", () => {",
+							"    pm.expect(body.email).to.eql(email);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"{{tegb_email}}\",\n    \"username\": \"{{tegb_username}}\",\n    \"password\": \"{{tegb_password}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{tegb_url}}/tegb/register",
+					"host": [
+						"{{tegb_url}}"
+					],
+					"path": [
+						"tegb",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json();",
+							"",
+							"pm.environment.set(\"tegb_token\", data.access_token);",
+							"",
+							"pm.test(\"Response status is 201\", () => {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response body have property 'access_token'\", () => {",
+							"    pm.expect(body).to.have.property(\"access_token\");",
+							"});",
+							"",
+							"pm.test(\"Property 'access_token' is string\", () => {",
+							"    pm.expect(body.access_token).to.be.a(\"string\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"{{tegb_username}}\",\n    \"password\": \"{{tegb_password}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{tegb_url}}/tegb/login",
+					"host": [
+						"{{tegb_url}}"
+					],
+					"path": [
+						"tegb",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"const expectedUserId = pm.environment.get(\"user_id\");",
+							"const expectedAccountType = pm.environment.get(\"tegb_account_type\")",
+							"",
+							"pm.test(\"accountId is visible\", () => {",
+							"    const accountId = jsonData.accountId",
+							"    pm.expect(accountId).to.be.a(\"number\");",
+							"    pm.environment.set(\"account_id\", accountId);",
+							"})",
+							"",
+							"pm.test(\"accountNumber is a number\", () => {",
+							"    const accountNumber = jsonData.accountNumber",
+							"    pm.expect(accountNumber).to.be.a(\"string\");",
+							"    pm.environment.set(\"account_number\", accountNumber);",
+							"})",
+							"",
+							"pm.test(\"userId is correct\", () => {",
+							"    const userId = jsonData.userId;",
+							"    pm.expect(jsonData.userId).to.be.eq(expectedUserId)",
+							"})",
+							"",
+							"pm.test(\"accountType is correct\", () => {",
+							"    const accountType = jsonData.accountType;",
+							"    pm.expect(jsonData.accountType).to.be.eq(expectedAccountType)",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tegb_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"startBalance\": {{start_balance}},\n    \"type\": \"{{tegb_account_type}}\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{tegb_url}}/tegb/accounts/create",
+					"host": [
+						"{{tegb_url}}"
+					],
+					"path": [
+						"tegb",
+						"accounts",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account by ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{tegb_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{tegb_url}}/tegb/accounts/:id",
+					"host": [
+						"{{tegb_url}}"
+					],
+					"path": [
+						"tegb",
+						"accounts",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "{{account_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
