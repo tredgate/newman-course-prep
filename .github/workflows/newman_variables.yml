@@ -24,4 +24,4 @@ jobs:
         run: npm ci
         # Spuštění Newman testů
       - name: Run Newman tests
-        run: npx newman run "./collections/Newman Simple.postman_collection.json" -e "./data/newman_course.TEST.postman_environment.json" -g "./data/newman_course.postman_globals.json"
+        run: npx newman run "./collections/Newman Variables.postman_collection.json" -e "./data/newman_course.TEST.postman_environment.json" -g "./data/newman_course.postman_globals.json"
