@@ -28,6 +28,7 @@ jobs:
       # Uložení HTML reportu jako artifact do GitHub Actions
       - name: Upload HTML Report as Artifact
         uses: actions/upload-artifact@v6
+        if: ${{ !cancelled() }}
         with:
           name: newman-html-report
           path: newman/html-report.html
