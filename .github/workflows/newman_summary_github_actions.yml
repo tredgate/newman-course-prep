@@ -1,0 +1,73 @@
+# NÁZEV WORKFLOW - bude se zobrazovat v seznamu workflow v GitHub Actions
+name: Newman with Summary in GitHub Actions
+# Manuální spuštění workflow přes GitHub Actions UI
+on: workflow_dispatch
+# Joby (úlohy) které se mají spustit - job funguje jako samostatný skript, můžeme takto rozdělit workflow na více částí (například: příprava prostředí, testy, úklid prostředí, reporting, ...)
+jobs:
+  # NÁZEV JOBU - bude se zobrazovat v seznamu jobů v rámci workflow
+  newman_tests:
+    # Maximální doba běhu jobu v minutách (abychom nekonecne nečekali na dokončení), pomůže se vyvarovat účtování za zbytečně dlouhý běh
+    timeout-minutes: 5
+    # V jakém prostředí se má job spustit - Použijeme Ubuntu (Linux) - nejvýhodnější v GitHub Actions a efektivní pro většinu případů použití
+    runs-on: ubuntu-latest
+    # Kroky (steps) které se mají v rámci jobu spustit - kroky jsou jednotlivé příkazy nebo akce, které se vykonají v rámci jobu
+    steps:
+      # Checkout repository - základní krok pro získání kódu z repozitáře
+      - uses: actions/checkout@v6
+      # Instalace Node.js prostředí - potřebujeme pro běh Newman
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+      # Instalace závislostí - nainstalujeme všechny knihovny potřebné pro běh Newman
+      - name: Install dependencies
+        run: npm ci
+      # Spuštění Newman testů - s continue-on-error aby workflow pokračoval i při selhání testů
+      - name: Run Newman tests
+        continue-on-error: true
+        run: npx newman run "./collections/Newman Failing Tests.postman_collection.json" -r cli,json --reporter-json-export newman/newman-run-report.json
+      # Generování Newman Summary do GitHub Actions Summary
+      - name: Generate Newman Summary
+        if: ${{ !cancelled() }}
+        run: |
+          node -e '
+          const fs = require("fs");
+
+          try {
+            // Načtení JSON reportu z Newman
+            const report = JSON.parse(fs.readFileSync("newman/newman-run-report.json", "utf8"));
+            const stats = report.run.stats;
+            const timings = report.run.timings;
+            
+            // Funkce pro určení emoji podle stavu
+            function getEmoji(stat) {
+              if (stat.pending > 0) return "🟠";
+              if (stat.failed > 0) return "🔴";
+              return "🟢";
+            }
+            
+            // Vytvoření markdown tabulky
+            let summary = "## Newman Test Summary\n\n";
+            summary += "| | Executed | Failed |\n";
+            summary += "|---|---|---|\n";
+            summary += `| ${getEmoji(stats.iterations)} iterations | ${stats.iterations.total} | ${stats.iterations.failed} |\n`;
+            summary += `| ${getEmoji(stats.requests)} requests | ${stats.requests.total} | ${stats.requests.failed} |\n`;
+            summary += `| ${getEmoji(stats.testScripts)} test-scripts | ${stats.testScripts.total} | ${stats.testScripts.failed} |\n`;
+            summary += `| ${getEmoji(stats.prerequestScripts)} prerequest-scripts | ${stats.prerequestScripts.total} | ${stats.prerequestScripts.failed} |\n`;
+            summary += `| ${getEmoji(stats.assertions)} assertions | ${stats.assertions.total} | ${stats.assertions.failed} |\n`;
+            
+            // Přidání časových informací
+            const duration = timings.completed - timings.started;
+            const avgResponse = timings.responseAverage;
+            summary += `\n**Total run duration:** ${duration}ms\n`;
+            summary += `**Average response time:** ${avgResponse}ms\n`;
+            
+            // Zápis do GitHub Actions Summary
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summary);
+            
+          } catch (error) {
+            // Zobrazení chyby pokud se nepodaří načíst nebo zpracovat report
+            const errorMsg = `## ❌ Newman Summary Generation Failed\n\n**Error:** ${error.message}\n`;
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, errorMsg);
+          }
+          '
