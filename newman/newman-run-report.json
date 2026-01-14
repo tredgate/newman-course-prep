@@ -1,0 +1,3789 @@
+{
+  "collection": {
+    "_": {
+      "postman_id": "ba28c079-0da5-4974-869c-520918053750",
+      "exporter_id": "18237009",
+      "collection_link": "https://prednasky.postman.co/workspace/Newman-Course~f4274440-adbb-4ada-adce-8caf96c3fb61/collection/18237009-ba28c079-0da5-4974-869c-520918053750?action=share&source=collection_link&creator=18237009"
+    },
+    "item": [
+      {
+        "id": "1c5fbeb6-556d-4643-9b5d-3326ebf23575",
+        "name": "Training POST - invalid URL",
+        "request": {
+          "description": {
+            "content": "Generated from cURL: curl --location --request POST 'https://tegb-backend-877a0b063d29.herokuapp.comtrain'",
+            "type": "text/plain"
+          },
+          "url": {
+            "protocol": "https",
+            "path": [
+              "trai"
+            ],
+            "host": [
+              "tegb-backend-877a0b063d29",
+              "herokuapp",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "method": "POST"
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "548cd029-d41b-4f62-91ec-d5596e321955",
+              "type": "text/javascript",
+              "packages": {},
+              "exec": [
+                ""
+              ],
+              "_lastExecutionId": "2556918e-b7a8-4864-aa91-8bfea27fc266"
+            }
+          },
+          {
+            "listen": "prerequest",
+            "script": {
+              "id": "f378e473-62ad-423c-be13-00cb06339310",
+              "type": "text/javascript",
+              "packages": {},
+              "exec": [
+                ""
+              ],
+              "_lastExecutionId": "ffd9f8cf-8dc4-4088-97b7-61a2a6a81c21"
+            }
+          }
+        ]
+      },
+      {
+        "id": "8761ce55-e765-4514-a785-76e86a248b37",
+        "name": "Training POST - syntax error in tests",
+        "request": {
+          "description": {
+            "content": "Generated from cURL: curl --location --request POST 'https://tegb-backend-877a0b063d29.herokuapp.comtrain'",
+            "type": "text/plain"
+          },
+          "url": {
+            "protocol": "https",
+            "path": [
+              "train"
+            ],
+            "host": [
+              "tegb-backend-877a0b063d29",
+              "herokuapp",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "method": "POST"
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "test",
+            "script": {
+              "id": "df36f90a-dfe4-429d-83ee-d6ec165a0955",
+              "type": "text/javascript",
+              "packages": {},
+              "exec": [
+                "const body = pm.response.json();",
+                "",
+                "pm.test(\"Response status is 201\", () => ",
+                "    pm.response.to.have.status(201);",
+                "});",
+                "",
+                "pm.test(\"Response body have properties\", () => {",
+                "    pm.expect(body).to.haveOwnProperty(\"id\");",
+                "    pm.expect(body).to.haveOwnProperty(\"message\");",
+                "    pm.expect(body).to.haveOwnProperty(\"timestamp\");",
+                "});",
+                "",
+                "pm.test(\"Response body.id is number\", () => {",
+                "    pm.expect(body.id).to.be.a(\"number\");",
+                "});",
+                "",
+                "pm.test(\"Response body.message is string\", () => {",
+                "    pm.expect(body.message).to.be.a(\"string\");",
+                "})",
+                "",
+                "",
+                "pm.test(\"Response body.timestamp is string\", () => {",
+                "    pm.expect(body.timestamp).to.be.a(\"string\");",
+                "})",
+                "",
+                "pm.test(\"Response body.id is 1\", () => {",
+                "    pm.expect(body.id).to.eq(1);",
+                "});",
+                "",
+                "pm.test(\"Response body.message have correct value\", () => {",
+                "    const expectedText = \"TEG#B Training POST request successful\";",
+                "    pm.expect(body.message).to.eq(expectedText)",
+                "});",
+                ""
+              ],
+              "_lastExecutionId": "b906c7e1-9155-42ad-8923-abbedcf65da2"
+            }
+          },
+          {
+            "listen": "prerequest",
+            "script": {
+              "id": "199f49fe-cade-4810-8e8f-3083e0af496d",
+              "type": "text/javascript",
+              "packages": {},
+              "exec": [
+                ""
+              ],
+              "_lastExecutionId": "ddd45fc6-e41c-432b-8d8c-a3e67684c1b7"
+            }
+          }
+        ]
+      },
+      {
+        "id": "4e571d12-2a5a-46b4-a961-7b5dc4f23413",
+        "name": "ENOTFOUND error - wrong url",
+        "request": {
+          "description": {
+            "content": "Generated from cURL: curl --location 'https://tegb-backend-877a0b063d29.herokuapp.com/train/header' \\\n--header 'train: Testujeme v Playwright'",
+            "type": "text/plain"
+          },
+          "url": {
+            "protocol": "https",
+            "host": [
+              "fafafafa"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "train",
+              "value": "{{reqHeader}}"
+            }
+          ],
+          "method": "GET"
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "prerequest",
+            "script": {
+              "id": "fefe5e84-5e47-4ea4-b833-d054a42a8b87",
+              "type": "text/javascript",
+              "packages": {},
+              "exec": [
+                "pm.variables.set(\"reqHeader\", \"Testujeme Newman\");"
+              ],
+              "_lastExecutionId": "da425d6a-dcc5-4bb0-bf0f-df31b24dacbc"
+            }
+          },
+          {
+            "listen": "test",
+            "script": {
+              "id": "ad2e1d14-5f45-40d8-97ac-c65504d70dcd",
+              "type": "text/javascript",
+              "packages": {},
+              "exec": [
+                ""
+              ],
+              "_lastExecutionId": "dee367ae-9417-401d-b09e-edb824dbab69"
+            }
+          }
+        ]
+      },
+      {
+        "id": "195cba14-8d39-4cfc-8f65-6062262580cc",
+        "name": "Failing tests",
+        "request": {
+          "description": {
+            "content": "Generated from cURL: curl --location 'https://tegb-backend-877a0b063d29.herokuapp.com/auth/register' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"email\": \"luke@example.com\",\n    \"password\": \"heslo1\",\n    \"firstName\": \"Luke\",\n    \"lastName\": \"Skywalker\",\n    \"age\": 25\n}'",
+            "type": "text/plain"
+          },
+          "url": {
+            "protocol": "https",
+            "path": [
+              "auth",
+              "register"
+            ],
+            "host": [
+              "tegb-backend-877a0b063d29",
+              "herokuapp",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"email\": \"{{reqEmail}}\",\n    \"password\": \"{{reqPassword}}\",\n    \"firstName\": \"{{reqFirstName}}\",\n    \"lastName\": \"{{reqLastName}}\",\n    \"age\": {{reqAge}}\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": [],
+        "event": [
+          {
+            "listen": "prerequest",
+            "script": {
+              "id": "d0005819-f000-44e0-9a76-c5e648dbfc3a",
+              "type": "text/javascript",
+              "packages": {},
+              "exec": [
+                "const randomEmail = pm.variables.replaceIn('{{$randomExampleEmail}}');",
+                "const randomFirstName = pm.variables.replaceIn('{{$randomFirstName}}');",
+                "const randomLastName = pm.variables.replaceIn('{{$randomLastName}}');",
+                "",
+                "pm.variables.set(\"reqFirstName\", randomFirstName);",
+                "pm.variables.set(\"reqLastName\", randomLastName);",
+                "pm.variables.set(\"reqEmail\", randomEmail);",
+                "pm.variables.set(\"reqPassword\", \"Heslo1234\");",
+                "pm.variables.set(\"reqAge\", 33);",
+                ""
+              ],
+              "_lastExecutionId": "947e223f-10ba-4897-926c-da7012964141"
+            }
+          },
+          {
+            "listen": "test",
+            "script": {
+              "id": "4b4aed13-def0-49bb-9bc6-5435a1c1e7c7",
+              "type": "text/javascript",
+              "packages": {},
+              "exec": [
+                "const firstName = pm.variables.get(\"reqFirstName\");",
+                "const lastName = pm.variables.get(\"reqLastName\");",
+                "const email = pm.variables.get(\"reqEmail\");",
+                "const age = pm.variables.get(\"reqAge\");",
+                "const body = pm.response.json();",
+                "",
+                "pm.test(\"Response status is 200\", () => {",
+                "    pm.response.to.have.status(200);",
+                "});",
+                "",
+                "pm.test(\"Response body have properties\", () => {",
+                "    pm.expect(body).to.haveOwnProperty(\"message\");",
+                "    pm.expect(body).to.haveOwnProperty(\"user\");",
+                "    pm.expect(body.user).to.haveOwnProperty(\"email\");",
+                "    pm.expect(body.user).to.haveOwnProperty(\"firstName\");",
+                "    pm.expect(body.user).to.haveOwnProperty(\"lastName\");",
+                "    pm.expect(body.user).to.haveOwnProperty(\"age\");",
+                "    pm.expect(body.user).to.haveOwnProperty(\"id\");",
+                "});",
+                "",
+                "pm.test(\"Response body.message is string\", () => {",
+                "    pm.expect(body.message).to.be.a(\"string\");",
+                "});",
+                "",
+                "pm.test(\"Response body.user is object\", () => {",
+                "    pm.expect(body.user).to.be.a(\"object\");",
+                "});",
+                "",
+                "pm.test(\"Response body.user.email is string\", () => {",
+                "    pm.expect(body.user.email).to.be.a(\"string\");",
+                "});",
+                "",
+                "pm.test(\"Response body.user.firstName is string\", () => {",
+                "    pm.expect(body.user.firstName).to.be.a(\"string\");",
+                "})",
+                "",
+                "pm.test(\"Response body.user.lastName is string\", () => {",
+                "    pm.expect(body.user.lastName).to.be.a(\"boolean\");",
+                "})",
+                "",
+                "pm.test(\"Response body.user.age is number\", () => {",
+                "    pm.expect(body.user.age).to.be.a(\"number\");",
+                "})",
+                "",
+                "pm.test(\"Response body.user.id is number\", () => {",
+                "    pm.expect(body.user.id).to.be.a(\"number\");",
+                "})",
+                "",
+                "pm.test(\"Response body.id message have correct text\", () => {",
+                "    const expectedText = \"User registered\";",
+                "    pm.expect(body.message).to.eq(expectedText)",
+                "});",
+                "",
+                "pm.test(`Response body.user.email have value: '${email}'`, () => {",
+                "    pm.expect(body.user.email).to.eq(email)",
+                "});",
+                "",
+                "pm.test(`Response body.user.firstName have value: '${firstName}'`, () => {",
+                "    pm.expect(body.user.firstName).to.eq(\"555\")",
+                "});",
+                "",
+                "pm.test(`Response body.user.lastName have value: '${lastName}'`, () => {",
+                "    pm.expect(body.user.lastName).to.eq(lastName)",
+                "});",
+                "",
+                "pm.test(`Response body.user.age have value: '${age}'`, () => {",
+                "    pm.expect(body.user.age ).to.eq(age)",
+                "});",
+                ""
+              ],
+              "_lastExecutionId": "65fa803b-8cff-4868-afe0-358b34484895"
+            }
+          }
+        ]
+      }
+    ],
+    "event": [],
+    "variable": [],
+    "info": {
+      "_postman_id": "ba28c079-0da5-4974-869c-520918053750",
+      "name": "Newman Failing Tests",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    }
+  },
+  "environment": {
+    "id": "e78a26b2-c40b-478f-a1d9-e9460f4597e5",
+    "values": []
+  },
+  "globals": {
+    "id": "f74136a5-659e-43b2-90dd-fe6f28a7dedb",
+    "values": []
+  },
+  "run": {
+    "stats": {
+      "iterations": {
+        "total": 1,
+        "pending": 0,
+        "failed": 0
+      },
+      "items": {
+        "total": 4,
+        "pending": 0,
+        "failed": 0
+      },
+      "scripts": {
+        "total": 8,
+        "pending": 0,
+        "failed": 1
+      },
+      "prerequests": {
+        "total": 4,
+        "pending": 0,
+        "failed": 0
+      },
+      "requests": {
+        "total": 4,
+        "pending": 0,
+        "failed": 1
+      },
+      "tests": {
+        "total": 4,
+        "pending": 0,
+        "failed": 0
+      },
+      "assertions": {
+        "total": 14,
+        "pending": 0,
+        "failed": 3
+      },
+      "testScripts": {
+        "total": 4,
+        "pending": 0,
+        "failed": 1
+      },
+      "prerequestScripts": {
+        "total": 4,
+        "pending": 0,
+        "failed": 0
+      }
+    },
+    "timings": {
+      "responseAverage": 139,
+      "responseMin": 40,
+      "responseMax": 303,
+      "responseSd": 127.03444414803413,
+      "dnsAverage": 0,
+      "dnsMin": 0,
+      "dnsMax": 0,
+      "dnsSd": 0,
+      "firstByteAverage": 0,
+      "firstByteMin": 0,
+      "firstByteMax": 0,
+      "firstByteSd": 0,
+      "started": 1768416660160,
+      "completed": 1768416660622
+    },
+    "executions": [
+      {
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 4,
+          "cycles": 1,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "c23c53a9-402c-4e81-b98a-938bf9f69bea",
+          "httpRequestId": "c78930b3-99a7-4d7e-98d6-3acb7ab524df"
+        },
+        "item": {
+          "id": "1c5fbeb6-556d-4643-9b5d-3326ebf23575",
+          "name": "Training POST - invalid URL",
+          "request": {
+            "description": {
+              "content": "Generated from cURL: curl --location --request POST 'https://tegb-backend-877a0b063d29.herokuapp.comtrain'",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "trai"
+              ],
+              "host": [
+                "tegb-backend-877a0b063d29",
+                "herokuapp",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "548cd029-d41b-4f62-91ec-d5596e321955",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  ""
+                ],
+                "_lastExecutionId": "2556918e-b7a8-4864-aa91-8bfea27fc266"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "f378e473-62ad-423c-be13-00cb06339310",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  ""
+                ],
+                "_lastExecutionId": "ffd9f8cf-8dc4-4088-97b7-61a2a6a81c21"
+              }
+            }
+          ]
+        },
+        "request": {
+          "description": {
+            "content": "Generated from cURL: curl --location --request POST 'https://tegb-backend-877a0b063d29.herokuapp.comtrain'",
+            "type": "text/plain"
+          },
+          "url": {
+            "protocol": "https",
+            "path": [
+              "trai"
+            ],
+            "host": [
+              "tegb-backend-877a0b063d29",
+              "herokuapp",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "c628602b-c955-4209-b52d-516f042b72f9",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "tegb-backend-877a0b063d29.herokuapp.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "0",
+              "system": true
+            }
+          ],
+          "method": "POST"
+        },
+        "response": {
+          "id": "a3d1e77e-c665-4683-8660-260022c10c43",
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "68"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 14 Jan 2026 18:51:00 GMT"
+            },
+            {
+              "key": "Etag",
+              "value": "W/\"44-fo3hddOuIdXDtAqKzC/ZBXJgUSU\""
+            },
+            {
+              "key": "Nel",
+              "value": "{\"report_to\":\"heroku-nel\",\"response_headers\":[\"Via\"],\"max_age\":3600,\"success_fraction\":0.01,\"failure_fraction\":0.1}"
+            },
+            {
+              "key": "Report-To",
+              "value": "{\"group\":\"heroku-nel\",\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?s=eKgO0dthRJmDb6zQnuq4qZ5mC2rjkBw9nprK234UYe0%3D\\u0026sid=812dcc77-0bd0-43b1-a5f1-b25750382959\\u0026ts=1768416660\"}],\"max_age\":3600}"
+            },
+            {
+              "key": "Reporting-Endpoints",
+              "value": "heroku-nel=\"https://nel.heroku.com/reports?s=eKgO0dthRJmDb6zQnuq4qZ5mC2rjkBw9nprK234UYe0%3D&sid=812dcc77-0bd0-43b1-a5f1-b25750382959&ts=1768416660\""
+            },
+            {
+              "key": "Server",
+              "value": "Heroku"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Via",
+              "value": "1.1 heroku-router"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              109,
+              101,
+              115,
+              115,
+              97,
+              103,
+              101,
+              34,
+              58,
+              34,
+              67,
+              97,
+              110,
+              110,
+              111,
+              116,
+              32,
+              80,
+              79,
+              83,
+              84,
+              32,
+              47,
+              116,
+              114,
+              97,
+              105,
+              34,
+              44,
+              34,
+              101,
+              114,
+              114,
+              111,
+              114,
+              34,
+              58,
+              34,
+              78,
+              111,
+              116,
+              32,
+              70,
+              111,
+              117,
+              110,
+              100,
+              34,
+              44,
+              34,
+              115,
+              116,
+              97,
+              116,
+              117,
+              115,
+              67,
+              111,
+              100,
+              101,
+              34,
+              58,
+              52,
+              48,
+              52,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 303,
+          "responseSize": 68
+        },
+        "id": "1c5fbeb6-556d-4643-9b5d-3326ebf23575"
+      },
+      {
+        "cursor": {
+          "ref": "b35ae921-a705-40ee-9760-b9c71843ece1",
+          "length": 4,
+          "cycles": 1,
+          "position": 1,
+          "iteration": 0,
+          "httpRequestId": "2665b0f2-34f1-4143-bfdd-8af4aac7668e"
+        },
+        "item": {
+          "id": "8761ce55-e765-4514-a785-76e86a248b37",
+          "name": "Training POST - syntax error in tests",
+          "request": {
+            "description": {
+              "content": "Generated from cURL: curl --location --request POST 'https://tegb-backend-877a0b063d29.herokuapp.comtrain'",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "train"
+              ],
+              "host": [
+                "tegb-backend-877a0b063d29",
+                "herokuapp",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "df36f90a-dfe4-429d-83ee-d6ec165a0955",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "const body = pm.response.json();",
+                  "",
+                  "pm.test(\"Response status is 201\", () => ",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body have properties\", () => {",
+                  "    pm.expect(body).to.haveOwnProperty(\"id\");",
+                  "    pm.expect(body).to.haveOwnProperty(\"message\");",
+                  "    pm.expect(body).to.haveOwnProperty(\"timestamp\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.id is number\", () => {",
+                  "    pm.expect(body.id).to.be.a(\"number\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.message is string\", () => {",
+                  "    pm.expect(body.message).to.be.a(\"string\");",
+                  "})",
+                  "",
+                  "",
+                  "pm.test(\"Response body.timestamp is string\", () => {",
+                  "    pm.expect(body.timestamp).to.be.a(\"string\");",
+                  "})",
+                  "",
+                  "pm.test(\"Response body.id is 1\", () => {",
+                  "    pm.expect(body.id).to.eq(1);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.message have correct value\", () => {",
+                  "    const expectedText = \"TEG#B Training POST request successful\";",
+                  "    pm.expect(body.message).to.eq(expectedText)",
+                  "});",
+                  ""
+                ],
+                "_lastExecutionId": "b906c7e1-9155-42ad-8923-abbedcf65da2"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "199f49fe-cade-4810-8e8f-3083e0af496d",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  ""
+                ],
+                "_lastExecutionId": "ddd45fc6-e41c-432b-8d8c-a3e67684c1b7"
+              }
+            }
+          ]
+        },
+        "request": {
+          "description": {
+            "content": "Generated from cURL: curl --location --request POST 'https://tegb-backend-877a0b063d29.herokuapp.comtrain'",
+            "type": "text/plain"
+          },
+          "url": {
+            "protocol": "https",
+            "path": [
+              "train"
+            ],
+            "host": [
+              "tegb-backend-877a0b063d29",
+              "herokuapp",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "212ff8f6-e2b8-4aa8-a760-8270f6b1e5c4",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "tegb-backend-877a0b063d29.herokuapp.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "0",
+              "system": true
+            }
+          ],
+          "method": "POST"
+        },
+        "response": {
+          "id": "54708b3b-0696-4846-807c-4b24de54e9af",
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "98"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 14 Jan 2026 18:51:00 GMT"
+            },
+            {
+              "key": "Etag",
+              "value": "W/\"62-ICOdEizBbxF8WztTKbMWEW0vrLU\""
+            },
+            {
+              "key": "Nel",
+              "value": "{\"report_to\":\"heroku-nel\",\"response_headers\":[\"Via\"],\"max_age\":3600,\"success_fraction\":0.01,\"failure_fraction\":0.1}"
+            },
+            {
+              "key": "Report-To",
+              "value": "{\"group\":\"heroku-nel\",\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?s=eKgO0dthRJmDb6zQnuq4qZ5mC2rjkBw9nprK234UYe0%3D\\u0026sid=812dcc77-0bd0-43b1-a5f1-b25750382959\\u0026ts=1768416660\"}],\"max_age\":3600}"
+            },
+            {
+              "key": "Reporting-Endpoints",
+              "value": "heroku-nel=\"https://nel.heroku.com/reports?s=eKgO0dthRJmDb6zQnuq4qZ5mC2rjkBw9nprK234UYe0%3D&sid=812dcc77-0bd0-43b1-a5f1-b25750382959&ts=1768416660\""
+            },
+            {
+              "key": "Server",
+              "value": "Heroku"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Via",
+              "value": "1.1 heroku-router"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              105,
+              100,
+              34,
+              58,
+              49,
+              44,
+              34,
+              109,
+              101,
+              115,
+              115,
+              97,
+              103,
+              101,
+              34,
+              58,
+              34,
+              84,
+              69,
+              71,
+              35,
+              66,
+              32,
+              84,
+              114,
+              97,
+              105,
+              110,
+              105,
+              110,
+              103,
+              32,
+              80,
+              79,
+              83,
+              84,
+              32,
+              114,
+              101,
+              113,
+              117,
+              101,
+              115,
+              116,
+              32,
+              115,
+              117,
+              99,
+              99,
+              101,
+              115,
+              115,
+              102,
+              117,
+              108,
+              34,
+              44,
+              34,
+              116,
+              105,
+              109,
+              101,
+              115,
+              116,
+              97,
+              109,
+              112,
+              34,
+              58,
+              34,
+              50,
+              48,
+              50,
+              54,
+              45,
+              48,
+              49,
+              45,
+              49,
+              52,
+              84,
+              49,
+              56,
+              58,
+              53,
+              49,
+              58,
+              48,
+              48,
+              46,
+              53,
+              53,
+              52,
+              90,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 41,
+          "responseSize": 98
+        },
+        "id": "8761ce55-e765-4514-a785-76e86a248b37",
+        "testScript": [
+          {
+            "error": {
+              "type": "Error",
+              "name": "SyntaxError",
+              "message": "missing ) after argument list",
+              "checksum": "e438c46ed8ec12a672b17d2240b35bb6",
+              "id": "1af1fca6-6c4b-4d37-bb6d-ded0a9c2dba9",
+              "timestamp": 1768416660537,
+              "stacktrace": []
+            }
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "4039276c-a042-4614-a7cf-3aef72aab9e7",
+          "length": 4,
+          "cycles": 1,
+          "position": 2,
+          "iteration": 0,
+          "httpRequestId": "5074141d-30b3-4c61-aa50-f6f35b65cae2"
+        },
+        "item": {
+          "id": "4e571d12-2a5a-46b4-a961-7b5dc4f23413",
+          "name": "ENOTFOUND error - wrong url",
+          "request": {
+            "description": {
+              "content": "Generated from cURL: curl --location 'https://tegb-backend-877a0b063d29.herokuapp.com/train/header' \\\n--header 'train: Testujeme v Playwright'",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "host": [
+                "fafafafa"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "train",
+                "value": "{{reqHeader}}"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "fefe5e84-5e47-4ea4-b833-d054a42a8b87",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.variables.set(\"reqHeader\", \"Testujeme Newman\");"
+                ],
+                "_lastExecutionId": "da425d6a-dcc5-4bb0-bf0f-df31b24dacbc"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "ad2e1d14-5f45-40d8-97ac-c65504d70dcd",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  ""
+                ],
+                "_lastExecutionId": "dee367ae-9417-401d-b09e-edb824dbab69"
+              }
+            }
+          ]
+        },
+        "request": {
+          "description": {
+            "content": "Generated from cURL: curl --location 'https://tegb-backend-877a0b063d29.herokuapp.com/train/header' \\\n--header 'train: Testujeme v Playwright'",
+            "type": "text/plain"
+          },
+          "url": {
+            "protocol": "https",
+            "path": [
+              ""
+            ],
+            "host": [
+              "fafafafa"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "train",
+              "value": "Testujeme Newman"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "63eb338b-16b0-486a-8092-3b5375044efe",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "fafafafa",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "GET"
+        },
+        "id": "4e571d12-2a5a-46b4-a961-7b5dc4f23413",
+        "requestError": {
+          "errno": -3008,
+          "code": "ENOTFOUND",
+          "syscall": "getaddrinfo",
+          "hostname": "fafafafa"
+        }
+      },
+      {
+        "cursor": {
+          "ref": "aa8f3517-236c-41a9-aa3a-970e15edcd55",
+          "length": 4,
+          "cycles": 1,
+          "position": 3,
+          "iteration": 0,
+          "httpRequestId": "ee0b2d07-e7e0-4421-b8da-512009cd670e"
+        },
+        "item": {
+          "id": "195cba14-8d39-4cfc-8f65-6062262580cc",
+          "name": "Failing tests",
+          "request": {
+            "description": {
+              "content": "Generated from cURL: curl --location 'https://tegb-backend-877a0b063d29.herokuapp.com/auth/register' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"email\": \"luke@example.com\",\n    \"password\": \"heslo1\",\n    \"firstName\": \"Luke\",\n    \"lastName\": \"Skywalker\",\n    \"age\": 25\n}'",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "auth",
+                "register"
+              ],
+              "host": [
+                "tegb-backend-877a0b063d29",
+                "herokuapp",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"{{reqEmail}}\",\n    \"password\": \"{{reqPassword}}\",\n    \"firstName\": \"{{reqFirstName}}\",\n    \"lastName\": \"{{reqLastName}}\",\n    \"age\": {{reqAge}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d0005819-f000-44e0-9a76-c5e648dbfc3a",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "const randomEmail = pm.variables.replaceIn('{{$randomExampleEmail}}');",
+                  "const randomFirstName = pm.variables.replaceIn('{{$randomFirstName}}');",
+                  "const randomLastName = pm.variables.replaceIn('{{$randomLastName}}');",
+                  "",
+                  "pm.variables.set(\"reqFirstName\", randomFirstName);",
+                  "pm.variables.set(\"reqLastName\", randomLastName);",
+                  "pm.variables.set(\"reqEmail\", randomEmail);",
+                  "pm.variables.set(\"reqPassword\", \"Heslo1234\");",
+                  "pm.variables.set(\"reqAge\", 33);",
+                  ""
+                ],
+                "_lastExecutionId": "947e223f-10ba-4897-926c-da7012964141"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "4b4aed13-def0-49bb-9bc6-5435a1c1e7c7",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "const firstName = pm.variables.get(\"reqFirstName\");",
+                  "const lastName = pm.variables.get(\"reqLastName\");",
+                  "const email = pm.variables.get(\"reqEmail\");",
+                  "const age = pm.variables.get(\"reqAge\");",
+                  "const body = pm.response.json();",
+                  "",
+                  "pm.test(\"Response status is 200\", () => {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body have properties\", () => {",
+                  "    pm.expect(body).to.haveOwnProperty(\"message\");",
+                  "    pm.expect(body).to.haveOwnProperty(\"user\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"email\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"firstName\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"lastName\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"age\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"id\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.message is string\", () => {",
+                  "    pm.expect(body.message).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.user is object\", () => {",
+                  "    pm.expect(body.user).to.be.a(\"object\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.user.email is string\", () => {",
+                  "    pm.expect(body.user.email).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.user.firstName is string\", () => {",
+                  "    pm.expect(body.user.firstName).to.be.a(\"string\");",
+                  "})",
+                  "",
+                  "pm.test(\"Response body.user.lastName is string\", () => {",
+                  "    pm.expect(body.user.lastName).to.be.a(\"boolean\");",
+                  "})",
+                  "",
+                  "pm.test(\"Response body.user.age is number\", () => {",
+                  "    pm.expect(body.user.age).to.be.a(\"number\");",
+                  "})",
+                  "",
+                  "pm.test(\"Response body.user.id is number\", () => {",
+                  "    pm.expect(body.user.id).to.be.a(\"number\");",
+                  "})",
+                  "",
+                  "pm.test(\"Response body.id message have correct text\", () => {",
+                  "    const expectedText = \"User registered\";",
+                  "    pm.expect(body.message).to.eq(expectedText)",
+                  "});",
+                  "",
+                  "pm.test(`Response body.user.email have value: '${email}'`, () => {",
+                  "    pm.expect(body.user.email).to.eq(email)",
+                  "});",
+                  "",
+                  "pm.test(`Response body.user.firstName have value: '${firstName}'`, () => {",
+                  "    pm.expect(body.user.firstName).to.eq(\"555\")",
+                  "});",
+                  "",
+                  "pm.test(`Response body.user.lastName have value: '${lastName}'`, () => {",
+                  "    pm.expect(body.user.lastName).to.eq(lastName)",
+                  "});",
+                  "",
+                  "pm.test(`Response body.user.age have value: '${age}'`, () => {",
+                  "    pm.expect(body.user.age ).to.eq(age)",
+                  "});",
+                  ""
+                ],
+                "_lastExecutionId": "65fa803b-8cff-4868-afe0-358b34484895"
+              }
+            }
+          ]
+        },
+        "request": {
+          "description": {
+            "content": "Generated from cURL: curl --location 'https://tegb-backend-877a0b063d29.herokuapp.com/auth/register' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"email\": \"luke@example.com\",\n    \"password\": \"heslo1\",\n    \"firstName\": \"Luke\",\n    \"lastName\": \"Skywalker\",\n    \"age\": 25\n}'",
+            "type": "text/plain"
+          },
+          "url": {
+            "protocol": "https",
+            "path": [
+              "auth",
+              "register"
+            ],
+            "host": [
+              "tegb-backend-877a0b063d29",
+              "herokuapp",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "4f65d5ca-ed6b-402a-a610-e9bbcd57e86f",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "tegb-backend-877a0b063d29.herokuapp.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "140",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\n    \"email\": \"Elmer.Dare@example.com\",\n    \"password\": \"Heslo1234\",\n    \"firstName\": \"Andrew\",\n    \"lastName\": \"Kassulke\",\n    \"age\": 33\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "7a08d385-a927-4146-91cb-19f6c58dd604",
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "131"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 14 Jan 2026 18:51:00 GMT"
+            },
+            {
+              "key": "Etag",
+              "value": "W/\"83-qiSAKYpEY5ZA0v0Egu5/lChLqFY\""
+            },
+            {
+              "key": "Nel",
+              "value": "{\"report_to\":\"heroku-nel\",\"response_headers\":[\"Via\"],\"max_age\":3600,\"success_fraction\":0.01,\"failure_fraction\":0.1}"
+            },
+            {
+              "key": "Report-To",
+              "value": "{\"group\":\"heroku-nel\",\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?s=eKgO0dthRJmDb6zQnuq4qZ5mC2rjkBw9nprK234UYe0%3D\\u0026sid=812dcc77-0bd0-43b1-a5f1-b25750382959\\u0026ts=1768416660\"}],\"max_age\":3600}"
+            },
+            {
+              "key": "Reporting-Endpoints",
+              "value": "heroku-nel=\"https://nel.heroku.com/reports?s=eKgO0dthRJmDb6zQnuq4qZ5mC2rjkBw9nprK234UYe0%3D&sid=812dcc77-0bd0-43b1-a5f1-b25750382959&ts=1768416660\""
+            },
+            {
+              "key": "Server",
+              "value": "Heroku"
+            },
+            {
+              "key": "Vary",
+              "value": "Origin"
+            },
+            {
+              "key": "Via",
+              "value": "1.1 heroku-router"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              109,
+              101,
+              115,
+              115,
+              97,
+              103,
+              101,
+              34,
+              58,
+              34,
+              85,
+              115,
+              101,
+              114,
+              32,
+              114,
+              101,
+              103,
+              105,
+              115,
+              116,
+              101,
+              114,
+              101,
+              100,
+              34,
+              44,
+              34,
+              117,
+              115,
+              101,
+              114,
+              34,
+              58,
+              123,
+              34,
+              101,
+              109,
+              97,
+              105,
+              108,
+              34,
+              58,
+              34,
+              69,
+              108,
+              109,
+              101,
+              114,
+              46,
+              68,
+              97,
+              114,
+              101,
+              64,
+              101,
+              120,
+              97,
+              109,
+              112,
+              108,
+              101,
+              46,
+              99,
+              111,
+              109,
+              34,
+              44,
+              34,
+              102,
+              105,
+              114,
+              115,
+              116,
+              78,
+              97,
+              109,
+              101,
+              34,
+              58,
+              34,
+              65,
+              110,
+              100,
+              114,
+              101,
+              119,
+              34,
+              44,
+              34,
+              108,
+              97,
+              115,
+              116,
+              78,
+              97,
+              109,
+              101,
+              34,
+              58,
+              34,
+              75,
+              97,
+              115,
+              115,
+              117,
+              108,
+              107,
+              101,
+              34,
+              44,
+              34,
+              97,
+              103,
+              101,
+              34,
+              58,
+              51,
+              51,
+              44,
+              34,
+              105,
+              100,
+              34,
+              58,
+              53,
+              55,
+              125,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 40,
+          "responseSize": 131
+        },
+        "id": "195cba14-8d39-4cfc-8f65-6062262580cc",
+        "assertions": [
+          {
+            "assertion": "Response status is 200",
+            "skipped": false,
+            "error": {
+              "name": "AssertionError",
+              "index": 0,
+              "test": "Response status is 200",
+              "message": "expected response to have status code 200 but got 201",
+              "stack": "AssertionError: expected response to have status code 200 but got 201\n   at Object.eval sandbox-script.js:1:4)"
+            }
+          },
+          {
+            "assertion": "Response body have properties",
+            "skipped": false
+          },
+          {
+            "assertion": "Response body.message is string",
+            "skipped": false
+          },
+          {
+            "assertion": "Response body.user is object",
+            "skipped": false
+          },
+          {
+            "assertion": "Response body.user.email is string",
+            "skipped": false
+          },
+          {
+            "assertion": "Response body.user.firstName is string",
+            "skipped": false
+          },
+          {
+            "assertion": "Response body.user.lastName is string",
+            "skipped": false,
+            "error": {
+              "name": "AssertionError",
+              "index": 6,
+              "test": "Response body.user.lastName is string",
+              "message": "expected 'Kassulke' to be a boolean",
+              "stack": "AssertionError: expected 'Kassulke' to be a boolean\n   at Object.eval sandbox-script.js:7:4)"
+            }
+          },
+          {
+            "assertion": "Response body.user.age is number",
+            "skipped": false
+          },
+          {
+            "assertion": "Response body.user.id is number",
+            "skipped": false
+          },
+          {
+            "assertion": "Response body.id message have correct text",
+            "skipped": false
+          },
+          {
+            "assertion": "Response body.user.email have value: 'Elmer.Dare@example.com'",
+            "skipped": false
+          },
+          {
+            "assertion": "Response body.user.firstName have value: 'Andrew'",
+            "skipped": false,
+            "error": {
+              "name": "AssertionError",
+              "index": 11,
+              "test": "Response body.user.firstName have value: 'Andrew'",
+              "message": "expected 'Andrew' to equal '555'",
+              "stack": "AssertionError: expected 'Andrew' to equal '555'\n   at Object.eval sandbox-script.js:12:4)"
+            }
+          },
+          {
+            "assertion": "Response body.user.lastName have value: 'Kassulke'",
+            "skipped": false
+          },
+          {
+            "assertion": "Response body.user.age have value: '33'",
+            "skipped": false
+          }
+        ]
+      }
+    ],
+    "transfers": {
+      "responseTotal": 297
+    },
+    "failures": [
+      {
+        "error": {
+          "type": "Error",
+          "name": "SyntaxError",
+          "message": "missing ) after argument list",
+          "checksum": "e438c46ed8ec12a672b17d2240b35bb6",
+          "id": "1af1fca6-6c4b-4d37-bb6d-ded0a9c2dba9",
+          "timestamp": 1768416660537,
+          "stacktrace": []
+        },
+        "at": "test-script",
+        "source": {
+          "id": "8761ce55-e765-4514-a785-76e86a248b37",
+          "name": "Training POST - syntax error in tests",
+          "request": {
+            "description": {
+              "content": "Generated from cURL: curl --location --request POST 'https://tegb-backend-877a0b063d29.herokuapp.comtrain'",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "train"
+              ],
+              "host": [
+                "tegb-backend-877a0b063d29",
+                "herokuapp",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "df36f90a-dfe4-429d-83ee-d6ec165a0955",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "const body = pm.response.json();",
+                  "",
+                  "pm.test(\"Response status is 201\", () => ",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body have properties\", () => {",
+                  "    pm.expect(body).to.haveOwnProperty(\"id\");",
+                  "    pm.expect(body).to.haveOwnProperty(\"message\");",
+                  "    pm.expect(body).to.haveOwnProperty(\"timestamp\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.id is number\", () => {",
+                  "    pm.expect(body.id).to.be.a(\"number\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.message is string\", () => {",
+                  "    pm.expect(body.message).to.be.a(\"string\");",
+                  "})",
+                  "",
+                  "",
+                  "pm.test(\"Response body.timestamp is string\", () => {",
+                  "    pm.expect(body.timestamp).to.be.a(\"string\");",
+                  "})",
+                  "",
+                  "pm.test(\"Response body.id is 1\", () => {",
+                  "    pm.expect(body.id).to.eq(1);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.message have correct value\", () => {",
+                  "    const expectedText = \"TEG#B Training POST request successful\";",
+                  "    pm.expect(body.message).to.eq(expectedText)",
+                  "});",
+                  ""
+                ],
+                "_lastExecutionId": "b906c7e1-9155-42ad-8923-abbedcf65da2"
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "199f49fe-cade-4810-8e8f-3083e0af496d",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  ""
+                ],
+                "_lastExecutionId": "ddd45fc6-e41c-432b-8d8c-a3e67684c1b7"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "_": {
+            "postman_id": "ba28c079-0da5-4974-869c-520918053750",
+            "exporter_id": "18237009",
+            "collection_link": "https://prednasky.postman.co/workspace/Newman-Course~f4274440-adbb-4ada-adce-8caf96c3fb61/collection/18237009-ba28c079-0da5-4974-869c-520918053750?action=share&source=collection_link&creator=18237009"
+          },
+          "item": [
+            {
+              "id": "1c5fbeb6-556d-4643-9b5d-3326ebf23575",
+              "name": "Training POST - invalid URL",
+              "request": {
+                "description": {
+                  "content": "Generated from cURL: curl --location --request POST 'https://tegb-backend-877a0b063d29.herokuapp.comtrain'",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "trai"
+                  ],
+                  "host": [
+                    "tegb-backend-877a0b063d29",
+                    "herokuapp",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "548cd029-d41b-4f62-91ec-d5596e321955",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "2556918e-b7a8-4864-aa91-8bfea27fc266"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "f378e473-62ad-423c-be13-00cb06339310",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "ffd9f8cf-8dc4-4088-97b7-61a2a6a81c21"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "8761ce55-e765-4514-a785-76e86a248b37",
+              "name": "Training POST - syntax error in tests",
+              "request": {
+                "description": {
+                  "content": "Generated from cURL: curl --location --request POST 'https://tegb-backend-877a0b063d29.herokuapp.comtrain'",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "train"
+                  ],
+                  "host": [
+                    "tegb-backend-877a0b063d29",
+                    "herokuapp",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "df36f90a-dfe4-429d-83ee-d6ec165a0955",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "const body = pm.response.json();",
+                      "",
+                      "pm.test(\"Response status is 201\", () => ",
+                      "    pm.response.to.have.status(201);",
+                      "});",
+                      "",
+                      "pm.test(\"Response body have properties\", () => {",
+                      "    pm.expect(body).to.haveOwnProperty(\"id\");",
+                      "    pm.expect(body).to.haveOwnProperty(\"message\");",
+                      "    pm.expect(body).to.haveOwnProperty(\"timestamp\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.id is number\", () => {",
+                      "    pm.expect(body.id).to.be.a(\"number\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.message is string\", () => {",
+                      "    pm.expect(body.message).to.be.a(\"string\");",
+                      "})",
+                      "",
+                      "",
+                      "pm.test(\"Response body.timestamp is string\", () => {",
+                      "    pm.expect(body.timestamp).to.be.a(\"string\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.id is 1\", () => {",
+                      "    pm.expect(body.id).to.eq(1);",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.message have correct value\", () => {",
+                      "    const expectedText = \"TEG#B Training POST request successful\";",
+                      "    pm.expect(body.message).to.eq(expectedText)",
+                      "});",
+                      ""
+                    ],
+                    "_lastExecutionId": "b906c7e1-9155-42ad-8923-abbedcf65da2"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "199f49fe-cade-4810-8e8f-3083e0af496d",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "ddd45fc6-e41c-432b-8d8c-a3e67684c1b7"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "4e571d12-2a5a-46b4-a961-7b5dc4f23413",
+              "name": "ENOTFOUND error - wrong url",
+              "request": {
+                "description": {
+                  "content": "Generated from cURL: curl --location 'https://tegb-backend-877a0b063d29.herokuapp.com/train/header' \\\n--header 'train: Testujeme v Playwright'",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "host": [
+                    "fafafafa"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "train",
+                    "value": "{{reqHeader}}"
+                  }
+                ],
+                "method": "GET"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "fefe5e84-5e47-4ea4-b833-d054a42a8b87",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.variables.set(\"reqHeader\", \"Testujeme Newman\");"
+                    ],
+                    "_lastExecutionId": "da425d6a-dcc5-4bb0-bf0f-df31b24dacbc"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "ad2e1d14-5f45-40d8-97ac-c65504d70dcd",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "dee367ae-9417-401d-b09e-edb824dbab69"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "195cba14-8d39-4cfc-8f65-6062262580cc",
+              "name": "Failing tests",
+              "request": {
+                "description": {
+                  "content": "Generated from cURL: curl --location 'https://tegb-backend-877a0b063d29.herokuapp.com/auth/register' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"email\": \"luke@example.com\",\n    \"password\": \"heslo1\",\n    \"firstName\": \"Luke\",\n    \"lastName\": \"Skywalker\",\n    \"age\": 25\n}'",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "auth",
+                    "register"
+                  ],
+                  "host": [
+                    "tegb-backend-877a0b063d29",
+                    "herokuapp",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"{{reqEmail}}\",\n    \"password\": \"{{reqPassword}}\",\n    \"firstName\": \"{{reqFirstName}}\",\n    \"lastName\": \"{{reqLastName}}\",\n    \"age\": {{reqAge}}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "d0005819-f000-44e0-9a76-c5e648dbfc3a",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "const randomEmail = pm.variables.replaceIn('{{$randomExampleEmail}}');",
+                      "const randomFirstName = pm.variables.replaceIn('{{$randomFirstName}}');",
+                      "const randomLastName = pm.variables.replaceIn('{{$randomLastName}}');",
+                      "",
+                      "pm.variables.set(\"reqFirstName\", randomFirstName);",
+                      "pm.variables.set(\"reqLastName\", randomLastName);",
+                      "pm.variables.set(\"reqEmail\", randomEmail);",
+                      "pm.variables.set(\"reqPassword\", \"Heslo1234\");",
+                      "pm.variables.set(\"reqAge\", 33);",
+                      ""
+                    ],
+                    "_lastExecutionId": "947e223f-10ba-4897-926c-da7012964141"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "4b4aed13-def0-49bb-9bc6-5435a1c1e7c7",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "const firstName = pm.variables.get(\"reqFirstName\");",
+                      "const lastName = pm.variables.get(\"reqLastName\");",
+                      "const email = pm.variables.get(\"reqEmail\");",
+                      "const age = pm.variables.get(\"reqAge\");",
+                      "const body = pm.response.json();",
+                      "",
+                      "pm.test(\"Response status is 200\", () => {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Response body have properties\", () => {",
+                      "    pm.expect(body).to.haveOwnProperty(\"message\");",
+                      "    pm.expect(body).to.haveOwnProperty(\"user\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"email\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"firstName\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"lastName\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"age\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"id\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.message is string\", () => {",
+                      "    pm.expect(body.message).to.be.a(\"string\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.user is object\", () => {",
+                      "    pm.expect(body.user).to.be.a(\"object\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.user.email is string\", () => {",
+                      "    pm.expect(body.user.email).to.be.a(\"string\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.user.firstName is string\", () => {",
+                      "    pm.expect(body.user.firstName).to.be.a(\"string\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.user.lastName is string\", () => {",
+                      "    pm.expect(body.user.lastName).to.be.a(\"boolean\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.user.age is number\", () => {",
+                      "    pm.expect(body.user.age).to.be.a(\"number\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.user.id is number\", () => {",
+                      "    pm.expect(body.user.id).to.be.a(\"number\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.id message have correct text\", () => {",
+                      "    const expectedText = \"User registered\";",
+                      "    pm.expect(body.message).to.eq(expectedText)",
+                      "});",
+                      "",
+                      "pm.test(`Response body.user.email have value: '${email}'`, () => {",
+                      "    pm.expect(body.user.email).to.eq(email)",
+                      "});",
+                      "",
+                      "pm.test(`Response body.user.firstName have value: '${firstName}'`, () => {",
+                      "    pm.expect(body.user.firstName).to.eq(\"555\")",
+                      "});",
+                      "",
+                      "pm.test(`Response body.user.lastName have value: '${lastName}'`, () => {",
+                      "    pm.expect(body.user.lastName).to.eq(lastName)",
+                      "});",
+                      "",
+                      "pm.test(`Response body.user.age have value: '${age}'`, () => {",
+                      "    pm.expect(body.user.age ).to.eq(age)",
+                      "});",
+                      ""
+                    ],
+                    "_lastExecutionId": "65fa803b-8cff-4868-afe0-358b34484895"
+                  }
+                }
+              ]
+            }
+          ],
+          "event": [],
+          "variable": [],
+          "info": {
+            "_postman_id": "ba28c079-0da5-4974-869c-520918053750",
+            "name": "Newman Failing Tests",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+          }
+        },
+        "cursor": {
+          "ref": "b35ae921-a705-40ee-9760-b9c71843ece1",
+          "length": 4,
+          "cycles": 1,
+          "position": 1,
+          "iteration": 0,
+          "httpRequestId": "2665b0f2-34f1-4143-bfdd-8af4aac7668e",
+          "scriptId": "df36f90a-dfe4-429d-83ee-d6ec165a0955"
+        }
+      },
+      {
+        "error": {
+          "errno": -3008,
+          "code": "ENOTFOUND",
+          "syscall": "getaddrinfo",
+          "hostname": "fafafafa",
+          "name": "Error",
+          "message": "getaddrinfo ENOTFOUND fafafafa",
+          "stack": "Error: getaddrinfo ENOTFOUND fafafafa\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)",
+          "checksum": "249afa90d40f28307d0e5bb3a8fcc01c",
+          "id": "04b8bba8-6c55-43c6-8264-992f88dfe7cf",
+          "timestamp": 1768416660555,
+          "stacktrace": [
+            {
+              "fileName": "node:dns",
+              "lineNumber": 120,
+              "functionName": "GetAddrInfoReqWrap.onlookupall [as oncomplete]",
+              "typeName": "GetAddrInfoReqWrap",
+              "methodName": "onlookupall [as oncomplete]",
+              "columnNumber": 26,
+              "native": false
+            }
+          ]
+        },
+        "at": "request",
+        "source": {
+          "id": "4e571d12-2a5a-46b4-a961-7b5dc4f23413",
+          "name": "ENOTFOUND error - wrong url",
+          "request": {
+            "description": {
+              "content": "Generated from cURL: curl --location 'https://tegb-backend-877a0b063d29.herokuapp.com/train/header' \\\n--header 'train: Testujeme v Playwright'",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                ""
+              ],
+              "host": [
+                "fafafafa"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "train",
+                "value": "Testujeme Newman"
+              },
+              {
+                "key": "User-Agent",
+                "value": "PostmanRuntime/7.39.1",
+                "system": true
+              },
+              {
+                "key": "Accept",
+                "value": "*/*",
+                "system": true
+              },
+              {
+                "key": "Cache-Control",
+                "value": "no-cache",
+                "system": true
+              },
+              {
+                "key": "Postman-Token",
+                "value": "63eb338b-16b0-486a-8092-3b5375044efe",
+                "system": true
+              },
+              {
+                "key": "Host",
+                "value": "fafafafa",
+                "system": true
+              },
+              {
+                "key": "Accept-Encoding",
+                "value": "gzip, deflate, br",
+                "system": true
+              },
+              {
+                "key": "Connection",
+                "value": "keep-alive",
+                "system": true
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "fefe5e84-5e47-4ea4-b833-d054a42a8b87",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "pm.variables.set(\"reqHeader\", \"Testujeme Newman\");"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "ad2e1d14-5f45-40d8-97ac-c65504d70dcd",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ]
+        },
+        "cursor": {
+          "ref": "4039276c-a042-4614-a7cf-3aef72aab9e7",
+          "length": 4,
+          "cycles": 1,
+          "position": 2,
+          "iteration": 0,
+          "httpRequestId": "5074141d-30b3-4c61-aa50-f6f35b65cae2"
+        }
+      },
+      {
+        "error": {
+          "name": "AssertionError",
+          "index": 0,
+          "test": "Response status is 200",
+          "message": "expected response to have status code 200 but got 201",
+          "stack": "AssertionError: expected response to have status code 200 but got 201\n   at Object.eval sandbox-script.js:1:4)",
+          "checksum": "96a6a7ae1008cf98b8e9fcee8a2c76ea",
+          "id": "8d108dde-b736-4592-b6df-c99fde3f9774",
+          "timestamp": 1768416660614,
+          "stacktrace": [
+            {
+              "fileName": "sandbox-script.js",
+              "lineNumber": 1,
+              "functionName": "Object.eval",
+              "typeName": "Object",
+              "methodName": "eval",
+              "columnNumber": 4,
+              "native": false
+            }
+          ]
+        },
+        "at": "assertion:0 in test-script",
+        "source": {
+          "id": "195cba14-8d39-4cfc-8f65-6062262580cc",
+          "name": "Failing tests",
+          "request": {
+            "description": {
+              "content": "Generated from cURL: curl --location 'https://tegb-backend-877a0b063d29.herokuapp.com/auth/register' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"email\": \"luke@example.com\",\n    \"password\": \"heslo1\",\n    \"firstName\": \"Luke\",\n    \"lastName\": \"Skywalker\",\n    \"age\": 25\n}'",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "auth",
+                "register"
+              ],
+              "host": [
+                "tegb-backend-877a0b063d29",
+                "herokuapp",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"{{reqEmail}}\",\n    \"password\": \"{{reqPassword}}\",\n    \"firstName\": \"{{reqFirstName}}\",\n    \"lastName\": \"{{reqLastName}}\",\n    \"age\": {{reqAge}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d0005819-f000-44e0-9a76-c5e648dbfc3a",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "const randomEmail = pm.variables.replaceIn('{{$randomExampleEmail}}');",
+                  "const randomFirstName = pm.variables.replaceIn('{{$randomFirstName}}');",
+                  "const randomLastName = pm.variables.replaceIn('{{$randomLastName}}');",
+                  "",
+                  "pm.variables.set(\"reqFirstName\", randomFirstName);",
+                  "pm.variables.set(\"reqLastName\", randomLastName);",
+                  "pm.variables.set(\"reqEmail\", randomEmail);",
+                  "pm.variables.set(\"reqPassword\", \"Heslo1234\");",
+                  "pm.variables.set(\"reqAge\", 33);",
+                  ""
+                ],
+                "_lastExecutionId": "947e223f-10ba-4897-926c-da7012964141"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "4b4aed13-def0-49bb-9bc6-5435a1c1e7c7",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "const firstName = pm.variables.get(\"reqFirstName\");",
+                  "const lastName = pm.variables.get(\"reqLastName\");",
+                  "const email = pm.variables.get(\"reqEmail\");",
+                  "const age = pm.variables.get(\"reqAge\");",
+                  "const body = pm.response.json();",
+                  "",
+                  "pm.test(\"Response status is 200\", () => {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body have properties\", () => {",
+                  "    pm.expect(body).to.haveOwnProperty(\"message\");",
+                  "    pm.expect(body).to.haveOwnProperty(\"user\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"email\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"firstName\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"lastName\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"age\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"id\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.message is string\", () => {",
+                  "    pm.expect(body.message).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.user is object\", () => {",
+                  "    pm.expect(body.user).to.be.a(\"object\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.user.email is string\", () => {",
+                  "    pm.expect(body.user.email).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.user.firstName is string\", () => {",
+                  "    pm.expect(body.user.firstName).to.be.a(\"string\");",
+                  "})",
+                  "",
+                  "pm.test(\"Response body.user.lastName is string\", () => {",
+                  "    pm.expect(body.user.lastName).to.be.a(\"boolean\");",
+                  "})",
+                  "",
+                  "pm.test(\"Response body.user.age is number\", () => {",
+                  "    pm.expect(body.user.age).to.be.a(\"number\");",
+                  "})",
+                  "",
+                  "pm.test(\"Response body.user.id is number\", () => {",
+                  "    pm.expect(body.user.id).to.be.a(\"number\");",
+                  "})",
+                  "",
+                  "pm.test(\"Response body.id message have correct text\", () => {",
+                  "    const expectedText = \"User registered\";",
+                  "    pm.expect(body.message).to.eq(expectedText)",
+                  "});",
+                  "",
+                  "pm.test(`Response body.user.email have value: '${email}'`, () => {",
+                  "    pm.expect(body.user.email).to.eq(email)",
+                  "});",
+                  "",
+                  "pm.test(`Response body.user.firstName have value: '${firstName}'`, () => {",
+                  "    pm.expect(body.user.firstName).to.eq(\"555\")",
+                  "});",
+                  "",
+                  "pm.test(`Response body.user.lastName have value: '${lastName}'`, () => {",
+                  "    pm.expect(body.user.lastName).to.eq(lastName)",
+                  "});",
+                  "",
+                  "pm.test(`Response body.user.age have value: '${age}'`, () => {",
+                  "    pm.expect(body.user.age ).to.eq(age)",
+                  "});",
+                  ""
+                ],
+                "_lastExecutionId": "65fa803b-8cff-4868-afe0-358b34484895"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "_": {
+            "postman_id": "ba28c079-0da5-4974-869c-520918053750",
+            "exporter_id": "18237009",
+            "collection_link": "https://prednasky.postman.co/workspace/Newman-Course~f4274440-adbb-4ada-adce-8caf96c3fb61/collection/18237009-ba28c079-0da5-4974-869c-520918053750?action=share&source=collection_link&creator=18237009"
+          },
+          "item": [
+            {
+              "id": "1c5fbeb6-556d-4643-9b5d-3326ebf23575",
+              "name": "Training POST - invalid URL",
+              "request": {
+                "description": {
+                  "content": "Generated from cURL: curl --location --request POST 'https://tegb-backend-877a0b063d29.herokuapp.comtrain'",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "trai"
+                  ],
+                  "host": [
+                    "tegb-backend-877a0b063d29",
+                    "herokuapp",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "548cd029-d41b-4f62-91ec-d5596e321955",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "2556918e-b7a8-4864-aa91-8bfea27fc266"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "f378e473-62ad-423c-be13-00cb06339310",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "ffd9f8cf-8dc4-4088-97b7-61a2a6a81c21"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "8761ce55-e765-4514-a785-76e86a248b37",
+              "name": "Training POST - syntax error in tests",
+              "request": {
+                "description": {
+                  "content": "Generated from cURL: curl --location --request POST 'https://tegb-backend-877a0b063d29.herokuapp.comtrain'",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "train"
+                  ],
+                  "host": [
+                    "tegb-backend-877a0b063d29",
+                    "herokuapp",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "df36f90a-dfe4-429d-83ee-d6ec165a0955",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "const body = pm.response.json();",
+                      "",
+                      "pm.test(\"Response status is 201\", () => ",
+                      "    pm.response.to.have.status(201);",
+                      "});",
+                      "",
+                      "pm.test(\"Response body have properties\", () => {",
+                      "    pm.expect(body).to.haveOwnProperty(\"id\");",
+                      "    pm.expect(body).to.haveOwnProperty(\"message\");",
+                      "    pm.expect(body).to.haveOwnProperty(\"timestamp\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.id is number\", () => {",
+                      "    pm.expect(body.id).to.be.a(\"number\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.message is string\", () => {",
+                      "    pm.expect(body.message).to.be.a(\"string\");",
+                      "})",
+                      "",
+                      "",
+                      "pm.test(\"Response body.timestamp is string\", () => {",
+                      "    pm.expect(body.timestamp).to.be.a(\"string\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.id is 1\", () => {",
+                      "    pm.expect(body.id).to.eq(1);",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.message have correct value\", () => {",
+                      "    const expectedText = \"TEG#B Training POST request successful\";",
+                      "    pm.expect(body.message).to.eq(expectedText)",
+                      "});",
+                      ""
+                    ],
+                    "_lastExecutionId": "b906c7e1-9155-42ad-8923-abbedcf65da2"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "199f49fe-cade-4810-8e8f-3083e0af496d",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "ddd45fc6-e41c-432b-8d8c-a3e67684c1b7"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "4e571d12-2a5a-46b4-a961-7b5dc4f23413",
+              "name": "ENOTFOUND error - wrong url",
+              "request": {
+                "description": {
+                  "content": "Generated from cURL: curl --location 'https://tegb-backend-877a0b063d29.herokuapp.com/train/header' \\\n--header 'train: Testujeme v Playwright'",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "host": [
+                    "fafafafa"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "train",
+                    "value": "{{reqHeader}}"
+                  }
+                ],
+                "method": "GET"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "fefe5e84-5e47-4ea4-b833-d054a42a8b87",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.variables.set(\"reqHeader\", \"Testujeme Newman\");"
+                    ],
+                    "_lastExecutionId": "da425d6a-dcc5-4bb0-bf0f-df31b24dacbc"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "ad2e1d14-5f45-40d8-97ac-c65504d70dcd",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "dee367ae-9417-401d-b09e-edb824dbab69"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "195cba14-8d39-4cfc-8f65-6062262580cc",
+              "name": "Failing tests",
+              "request": {
+                "description": {
+                  "content": "Generated from cURL: curl --location 'https://tegb-backend-877a0b063d29.herokuapp.com/auth/register' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"email\": \"luke@example.com\",\n    \"password\": \"heslo1\",\n    \"firstName\": \"Luke\",\n    \"lastName\": \"Skywalker\",\n    \"age\": 25\n}'",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "auth",
+                    "register"
+                  ],
+                  "host": [
+                    "tegb-backend-877a0b063d29",
+                    "herokuapp",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"{{reqEmail}}\",\n    \"password\": \"{{reqPassword}}\",\n    \"firstName\": \"{{reqFirstName}}\",\n    \"lastName\": \"{{reqLastName}}\",\n    \"age\": {{reqAge}}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "d0005819-f000-44e0-9a76-c5e648dbfc3a",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "const randomEmail = pm.variables.replaceIn('{{$randomExampleEmail}}');",
+                      "const randomFirstName = pm.variables.replaceIn('{{$randomFirstName}}');",
+                      "const randomLastName = pm.variables.replaceIn('{{$randomLastName}}');",
+                      "",
+                      "pm.variables.set(\"reqFirstName\", randomFirstName);",
+                      "pm.variables.set(\"reqLastName\", randomLastName);",
+                      "pm.variables.set(\"reqEmail\", randomEmail);",
+                      "pm.variables.set(\"reqPassword\", \"Heslo1234\");",
+                      "pm.variables.set(\"reqAge\", 33);",
+                      ""
+                    ],
+                    "_lastExecutionId": "947e223f-10ba-4897-926c-da7012964141"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "4b4aed13-def0-49bb-9bc6-5435a1c1e7c7",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "const firstName = pm.variables.get(\"reqFirstName\");",
+                      "const lastName = pm.variables.get(\"reqLastName\");",
+                      "const email = pm.variables.get(\"reqEmail\");",
+                      "const age = pm.variables.get(\"reqAge\");",
+                      "const body = pm.response.json();",
+                      "",
+                      "pm.test(\"Response status is 200\", () => {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Response body have properties\", () => {",
+                      "    pm.expect(body).to.haveOwnProperty(\"message\");",
+                      "    pm.expect(body).to.haveOwnProperty(\"user\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"email\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"firstName\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"lastName\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"age\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"id\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.message is string\", () => {",
+                      "    pm.expect(body.message).to.be.a(\"string\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.user is object\", () => {",
+                      "    pm.expect(body.user).to.be.a(\"object\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.user.email is string\", () => {",
+                      "    pm.expect(body.user.email).to.be.a(\"string\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.user.firstName is string\", () => {",
+                      "    pm.expect(body.user.firstName).to.be.a(\"string\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.user.lastName is string\", () => {",
+                      "    pm.expect(body.user.lastName).to.be.a(\"boolean\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.user.age is number\", () => {",
+                      "    pm.expect(body.user.age).to.be.a(\"number\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.user.id is number\", () => {",
+                      "    pm.expect(body.user.id).to.be.a(\"number\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.id message have correct text\", () => {",
+                      "    const expectedText = \"User registered\";",
+                      "    pm.expect(body.message).to.eq(expectedText)",
+                      "});",
+                      "",
+                      "pm.test(`Response body.user.email have value: '${email}'`, () => {",
+                      "    pm.expect(body.user.email).to.eq(email)",
+                      "});",
+                      "",
+                      "pm.test(`Response body.user.firstName have value: '${firstName}'`, () => {",
+                      "    pm.expect(body.user.firstName).to.eq(\"555\")",
+                      "});",
+                      "",
+                      "pm.test(`Response body.user.lastName have value: '${lastName}'`, () => {",
+                      "    pm.expect(body.user.lastName).to.eq(lastName)",
+                      "});",
+                      "",
+                      "pm.test(`Response body.user.age have value: '${age}'`, () => {",
+                      "    pm.expect(body.user.age ).to.eq(age)",
+                      "});",
+                      ""
+                    ],
+                    "_lastExecutionId": "65fa803b-8cff-4868-afe0-358b34484895"
+                  }
+                }
+              ]
+            }
+          ],
+          "event": [],
+          "variable": [],
+          "info": {
+            "_postman_id": "ba28c079-0da5-4974-869c-520918053750",
+            "name": "Newman Failing Tests",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+          }
+        },
+        "cursor": {
+          "ref": "aa8f3517-236c-41a9-aa3a-970e15edcd55",
+          "length": 4,
+          "cycles": 1,
+          "position": 3,
+          "iteration": 0,
+          "httpRequestId": "ee0b2d07-e7e0-4421-b8da-512009cd670e",
+          "scriptId": "4b4aed13-def0-49bb-9bc6-5435a1c1e7c7",
+          "execution": "65fa803b-8cff-4868-afe0-358b34484895"
+        }
+      },
+      {
+        "error": {
+          "name": "AssertionError",
+          "index": 6,
+          "test": "Response body.user.lastName is string",
+          "message": "expected 'Kassulke' to be a boolean",
+          "stack": "AssertionError: expected 'Kassulke' to be a boolean\n   at Object.eval sandbox-script.js:7:4)",
+          "checksum": "1ee98bb08e833062e031997a7c860dc9",
+          "id": "5158ee6a-8461-4652-8b6a-ce075bd3cba5",
+          "timestamp": 1768416660616,
+          "stacktrace": [
+            {
+              "fileName": "sandbox-script.js",
+              "lineNumber": 7,
+              "functionName": "Object.eval",
+              "typeName": "Object",
+              "methodName": "eval",
+              "columnNumber": 4,
+              "native": false
+            }
+          ]
+        },
+        "at": "assertion:6 in test-script",
+        "source": {
+          "id": "195cba14-8d39-4cfc-8f65-6062262580cc",
+          "name": "Failing tests",
+          "request": {
+            "description": {
+              "content": "Generated from cURL: curl --location 'https://tegb-backend-877a0b063d29.herokuapp.com/auth/register' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"email\": \"luke@example.com\",\n    \"password\": \"heslo1\",\n    \"firstName\": \"Luke\",\n    \"lastName\": \"Skywalker\",\n    \"age\": 25\n}'",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "auth",
+                "register"
+              ],
+              "host": [
+                "tegb-backend-877a0b063d29",
+                "herokuapp",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"{{reqEmail}}\",\n    \"password\": \"{{reqPassword}}\",\n    \"firstName\": \"{{reqFirstName}}\",\n    \"lastName\": \"{{reqLastName}}\",\n    \"age\": {{reqAge}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d0005819-f000-44e0-9a76-c5e648dbfc3a",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "const randomEmail = pm.variables.replaceIn('{{$randomExampleEmail}}');",
+                  "const randomFirstName = pm.variables.replaceIn('{{$randomFirstName}}');",
+                  "const randomLastName = pm.variables.replaceIn('{{$randomLastName}}');",
+                  "",
+                  "pm.variables.set(\"reqFirstName\", randomFirstName);",
+                  "pm.variables.set(\"reqLastName\", randomLastName);",
+                  "pm.variables.set(\"reqEmail\", randomEmail);",
+                  "pm.variables.set(\"reqPassword\", \"Heslo1234\");",
+                  "pm.variables.set(\"reqAge\", 33);",
+                  ""
+                ],
+                "_lastExecutionId": "947e223f-10ba-4897-926c-da7012964141"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "4b4aed13-def0-49bb-9bc6-5435a1c1e7c7",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "const firstName = pm.variables.get(\"reqFirstName\");",
+                  "const lastName = pm.variables.get(\"reqLastName\");",
+                  "const email = pm.variables.get(\"reqEmail\");",
+                  "const age = pm.variables.get(\"reqAge\");",
+                  "const body = pm.response.json();",
+                  "",
+                  "pm.test(\"Response status is 200\", () => {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body have properties\", () => {",
+                  "    pm.expect(body).to.haveOwnProperty(\"message\");",
+                  "    pm.expect(body).to.haveOwnProperty(\"user\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"email\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"firstName\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"lastName\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"age\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"id\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.message is string\", () => {",
+                  "    pm.expect(body.message).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.user is object\", () => {",
+                  "    pm.expect(body.user).to.be.a(\"object\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.user.email is string\", () => {",
+                  "    pm.expect(body.user.email).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.user.firstName is string\", () => {",
+                  "    pm.expect(body.user.firstName).to.be.a(\"string\");",
+                  "})",
+                  "",
+                  "pm.test(\"Response body.user.lastName is string\", () => {",
+                  "    pm.expect(body.user.lastName).to.be.a(\"boolean\");",
+                  "})",
+                  "",
+                  "pm.test(\"Response body.user.age is number\", () => {",
+                  "    pm.expect(body.user.age).to.be.a(\"number\");",
+                  "})",
+                  "",
+                  "pm.test(\"Response body.user.id is number\", () => {",
+                  "    pm.expect(body.user.id).to.be.a(\"number\");",
+                  "})",
+                  "",
+                  "pm.test(\"Response body.id message have correct text\", () => {",
+                  "    const expectedText = \"User registered\";",
+                  "    pm.expect(body.message).to.eq(expectedText)",
+                  "});",
+                  "",
+                  "pm.test(`Response body.user.email have value: '${email}'`, () => {",
+                  "    pm.expect(body.user.email).to.eq(email)",
+                  "});",
+                  "",
+                  "pm.test(`Response body.user.firstName have value: '${firstName}'`, () => {",
+                  "    pm.expect(body.user.firstName).to.eq(\"555\")",
+                  "});",
+                  "",
+                  "pm.test(`Response body.user.lastName have value: '${lastName}'`, () => {",
+                  "    pm.expect(body.user.lastName).to.eq(lastName)",
+                  "});",
+                  "",
+                  "pm.test(`Response body.user.age have value: '${age}'`, () => {",
+                  "    pm.expect(body.user.age ).to.eq(age)",
+                  "});",
+                  ""
+                ],
+                "_lastExecutionId": "65fa803b-8cff-4868-afe0-358b34484895"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "_": {
+            "postman_id": "ba28c079-0da5-4974-869c-520918053750",
+            "exporter_id": "18237009",
+            "collection_link": "https://prednasky.postman.co/workspace/Newman-Course~f4274440-adbb-4ada-adce-8caf96c3fb61/collection/18237009-ba28c079-0da5-4974-869c-520918053750?action=share&source=collection_link&creator=18237009"
+          },
+          "item": [
+            {
+              "id": "1c5fbeb6-556d-4643-9b5d-3326ebf23575",
+              "name": "Training POST - invalid URL",
+              "request": {
+                "description": {
+                  "content": "Generated from cURL: curl --location --request POST 'https://tegb-backend-877a0b063d29.herokuapp.comtrain'",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "trai"
+                  ],
+                  "host": [
+                    "tegb-backend-877a0b063d29",
+                    "herokuapp",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "548cd029-d41b-4f62-91ec-d5596e321955",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "2556918e-b7a8-4864-aa91-8bfea27fc266"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "f378e473-62ad-423c-be13-00cb06339310",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "ffd9f8cf-8dc4-4088-97b7-61a2a6a81c21"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "8761ce55-e765-4514-a785-76e86a248b37",
+              "name": "Training POST - syntax error in tests",
+              "request": {
+                "description": {
+                  "content": "Generated from cURL: curl --location --request POST 'https://tegb-backend-877a0b063d29.herokuapp.comtrain'",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "train"
+                  ],
+                  "host": [
+                    "tegb-backend-877a0b063d29",
+                    "herokuapp",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "df36f90a-dfe4-429d-83ee-d6ec165a0955",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "const body = pm.response.json();",
+                      "",
+                      "pm.test(\"Response status is 201\", () => ",
+                      "    pm.response.to.have.status(201);",
+                      "});",
+                      "",
+                      "pm.test(\"Response body have properties\", () => {",
+                      "    pm.expect(body).to.haveOwnProperty(\"id\");",
+                      "    pm.expect(body).to.haveOwnProperty(\"message\");",
+                      "    pm.expect(body).to.haveOwnProperty(\"timestamp\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.id is number\", () => {",
+                      "    pm.expect(body.id).to.be.a(\"number\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.message is string\", () => {",
+                      "    pm.expect(body.message).to.be.a(\"string\");",
+                      "})",
+                      "",
+                      "",
+                      "pm.test(\"Response body.timestamp is string\", () => {",
+                      "    pm.expect(body.timestamp).to.be.a(\"string\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.id is 1\", () => {",
+                      "    pm.expect(body.id).to.eq(1);",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.message have correct value\", () => {",
+                      "    const expectedText = \"TEG#B Training POST request successful\";",
+                      "    pm.expect(body.message).to.eq(expectedText)",
+                      "});",
+                      ""
+                    ],
+                    "_lastExecutionId": "b906c7e1-9155-42ad-8923-abbedcf65da2"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "199f49fe-cade-4810-8e8f-3083e0af496d",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "ddd45fc6-e41c-432b-8d8c-a3e67684c1b7"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "4e571d12-2a5a-46b4-a961-7b5dc4f23413",
+              "name": "ENOTFOUND error - wrong url",
+              "request": {
+                "description": {
+                  "content": "Generated from cURL: curl --location 'https://tegb-backend-877a0b063d29.herokuapp.com/train/header' \\\n--header 'train: Testujeme v Playwright'",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "host": [
+                    "fafafafa"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "train",
+                    "value": "{{reqHeader}}"
+                  }
+                ],
+                "method": "GET"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "fefe5e84-5e47-4ea4-b833-d054a42a8b87",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.variables.set(\"reqHeader\", \"Testujeme Newman\");"
+                    ],
+                    "_lastExecutionId": "da425d6a-dcc5-4bb0-bf0f-df31b24dacbc"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "ad2e1d14-5f45-40d8-97ac-c65504d70dcd",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "dee367ae-9417-401d-b09e-edb824dbab69"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "195cba14-8d39-4cfc-8f65-6062262580cc",
+              "name": "Failing tests",
+              "request": {
+                "description": {
+                  "content": "Generated from cURL: curl --location 'https://tegb-backend-877a0b063d29.herokuapp.com/auth/register' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"email\": \"luke@example.com\",\n    \"password\": \"heslo1\",\n    \"firstName\": \"Luke\",\n    \"lastName\": \"Skywalker\",\n    \"age\": 25\n}'",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "auth",
+                    "register"
+                  ],
+                  "host": [
+                    "tegb-backend-877a0b063d29",
+                    "herokuapp",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"{{reqEmail}}\",\n    \"password\": \"{{reqPassword}}\",\n    \"firstName\": \"{{reqFirstName}}\",\n    \"lastName\": \"{{reqLastName}}\",\n    \"age\": {{reqAge}}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "d0005819-f000-44e0-9a76-c5e648dbfc3a",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "const randomEmail = pm.variables.replaceIn('{{$randomExampleEmail}}');",
+                      "const randomFirstName = pm.variables.replaceIn('{{$randomFirstName}}');",
+                      "const randomLastName = pm.variables.replaceIn('{{$randomLastName}}');",
+                      "",
+                      "pm.variables.set(\"reqFirstName\", randomFirstName);",
+                      "pm.variables.set(\"reqLastName\", randomLastName);",
+                      "pm.variables.set(\"reqEmail\", randomEmail);",
+                      "pm.variables.set(\"reqPassword\", \"Heslo1234\");",
+                      "pm.variables.set(\"reqAge\", 33);",
+                      ""
+                    ],
+                    "_lastExecutionId": "947e223f-10ba-4897-926c-da7012964141"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "4b4aed13-def0-49bb-9bc6-5435a1c1e7c7",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "const firstName = pm.variables.get(\"reqFirstName\");",
+                      "const lastName = pm.variables.get(\"reqLastName\");",
+                      "const email = pm.variables.get(\"reqEmail\");",
+                      "const age = pm.variables.get(\"reqAge\");",
+                      "const body = pm.response.json();",
+                      "",
+                      "pm.test(\"Response status is 200\", () => {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Response body have properties\", () => {",
+                      "    pm.expect(body).to.haveOwnProperty(\"message\");",
+                      "    pm.expect(body).to.haveOwnProperty(\"user\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"email\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"firstName\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"lastName\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"age\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"id\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.message is string\", () => {",
+                      "    pm.expect(body.message).to.be.a(\"string\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.user is object\", () => {",
+                      "    pm.expect(body.user).to.be.a(\"object\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.user.email is string\", () => {",
+                      "    pm.expect(body.user.email).to.be.a(\"string\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.user.firstName is string\", () => {",
+                      "    pm.expect(body.user.firstName).to.be.a(\"string\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.user.lastName is string\", () => {",
+                      "    pm.expect(body.user.lastName).to.be.a(\"boolean\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.user.age is number\", () => {",
+                      "    pm.expect(body.user.age).to.be.a(\"number\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.user.id is number\", () => {",
+                      "    pm.expect(body.user.id).to.be.a(\"number\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.id message have correct text\", () => {",
+                      "    const expectedText = \"User registered\";",
+                      "    pm.expect(body.message).to.eq(expectedText)",
+                      "});",
+                      "",
+                      "pm.test(`Response body.user.email have value: '${email}'`, () => {",
+                      "    pm.expect(body.user.email).to.eq(email)",
+                      "});",
+                      "",
+                      "pm.test(`Response body.user.firstName have value: '${firstName}'`, () => {",
+                      "    pm.expect(body.user.firstName).to.eq(\"555\")",
+                      "});",
+                      "",
+                      "pm.test(`Response body.user.lastName have value: '${lastName}'`, () => {",
+                      "    pm.expect(body.user.lastName).to.eq(lastName)",
+                      "});",
+                      "",
+                      "pm.test(`Response body.user.age have value: '${age}'`, () => {",
+                      "    pm.expect(body.user.age ).to.eq(age)",
+                      "});",
+                      ""
+                    ],
+                    "_lastExecutionId": "65fa803b-8cff-4868-afe0-358b34484895"
+                  }
+                }
+              ]
+            }
+          ],
+          "event": [],
+          "variable": [],
+          "info": {
+            "_postman_id": "ba28c079-0da5-4974-869c-520918053750",
+            "name": "Newman Failing Tests",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+          }
+        },
+        "cursor": {
+          "ref": "aa8f3517-236c-41a9-aa3a-970e15edcd55",
+          "length": 4,
+          "cycles": 1,
+          "position": 3,
+          "iteration": 0,
+          "httpRequestId": "ee0b2d07-e7e0-4421-b8da-512009cd670e",
+          "scriptId": "4b4aed13-def0-49bb-9bc6-5435a1c1e7c7",
+          "execution": "65fa803b-8cff-4868-afe0-358b34484895"
+        }
+      },
+      {
+        "error": {
+          "name": "AssertionError",
+          "index": 11,
+          "test": "Response body.user.firstName have value: 'Andrew'",
+          "message": "expected 'Andrew' to equal '555'",
+          "stack": "AssertionError: expected 'Andrew' to equal '555'\n   at Object.eval sandbox-script.js:12:4)",
+          "checksum": "8d61305bf7eb3470dcc938af73869160",
+          "id": "d8bf3480-ad31-47b5-9c13-e33f85580762",
+          "timestamp": 1768416660617,
+          "stacktrace": [
+            {
+              "fileName": "sandbox-script.js",
+              "lineNumber": 12,
+              "functionName": "Object.eval",
+              "typeName": "Object",
+              "methodName": "eval",
+              "columnNumber": 4,
+              "native": false
+            }
+          ]
+        },
+        "at": "assertion:11 in test-script",
+        "source": {
+          "id": "195cba14-8d39-4cfc-8f65-6062262580cc",
+          "name": "Failing tests",
+          "request": {
+            "description": {
+              "content": "Generated from cURL: curl --location 'https://tegb-backend-877a0b063d29.herokuapp.com/auth/register' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"email\": \"luke@example.com\",\n    \"password\": \"heslo1\",\n    \"firstName\": \"Luke\",\n    \"lastName\": \"Skywalker\",\n    \"age\": 25\n}'",
+              "type": "text/plain"
+            },
+            "url": {
+              "protocol": "https",
+              "path": [
+                "auth",
+                "register"
+              ],
+              "host": [
+                "tegb-backend-877a0b063d29",
+                "herokuapp",
+                "com"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"{{reqEmail}}\",\n    \"password\": \"{{reqPassword}}\",\n    \"firstName\": \"{{reqFirstName}}\",\n    \"lastName\": \"{{reqLastName}}\",\n    \"age\": {{reqAge}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "d0005819-f000-44e0-9a76-c5e648dbfc3a",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "const randomEmail = pm.variables.replaceIn('{{$randomExampleEmail}}');",
+                  "const randomFirstName = pm.variables.replaceIn('{{$randomFirstName}}');",
+                  "const randomLastName = pm.variables.replaceIn('{{$randomLastName}}');",
+                  "",
+                  "pm.variables.set(\"reqFirstName\", randomFirstName);",
+                  "pm.variables.set(\"reqLastName\", randomLastName);",
+                  "pm.variables.set(\"reqEmail\", randomEmail);",
+                  "pm.variables.set(\"reqPassword\", \"Heslo1234\");",
+                  "pm.variables.set(\"reqAge\", 33);",
+                  ""
+                ],
+                "_lastExecutionId": "947e223f-10ba-4897-926c-da7012964141"
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "id": "4b4aed13-def0-49bb-9bc6-5435a1c1e7c7",
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                  "const firstName = pm.variables.get(\"reqFirstName\");",
+                  "const lastName = pm.variables.get(\"reqLastName\");",
+                  "const email = pm.variables.get(\"reqEmail\");",
+                  "const age = pm.variables.get(\"reqAge\");",
+                  "const body = pm.response.json();",
+                  "",
+                  "pm.test(\"Response status is 200\", () => {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body have properties\", () => {",
+                  "    pm.expect(body).to.haveOwnProperty(\"message\");",
+                  "    pm.expect(body).to.haveOwnProperty(\"user\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"email\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"firstName\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"lastName\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"age\");",
+                  "    pm.expect(body.user).to.haveOwnProperty(\"id\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.message is string\", () => {",
+                  "    pm.expect(body.message).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.user is object\", () => {",
+                  "    pm.expect(body.user).to.be.a(\"object\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.user.email is string\", () => {",
+                  "    pm.expect(body.user.email).to.be.a(\"string\");",
+                  "});",
+                  "",
+                  "pm.test(\"Response body.user.firstName is string\", () => {",
+                  "    pm.expect(body.user.firstName).to.be.a(\"string\");",
+                  "})",
+                  "",
+                  "pm.test(\"Response body.user.lastName is string\", () => {",
+                  "    pm.expect(body.user.lastName).to.be.a(\"boolean\");",
+                  "})",
+                  "",
+                  "pm.test(\"Response body.user.age is number\", () => {",
+                  "    pm.expect(body.user.age).to.be.a(\"number\");",
+                  "})",
+                  "",
+                  "pm.test(\"Response body.user.id is number\", () => {",
+                  "    pm.expect(body.user.id).to.be.a(\"number\");",
+                  "})",
+                  "",
+                  "pm.test(\"Response body.id message have correct text\", () => {",
+                  "    const expectedText = \"User registered\";",
+                  "    pm.expect(body.message).to.eq(expectedText)",
+                  "});",
+                  "",
+                  "pm.test(`Response body.user.email have value: '${email}'`, () => {",
+                  "    pm.expect(body.user.email).to.eq(email)",
+                  "});",
+                  "",
+                  "pm.test(`Response body.user.firstName have value: '${firstName}'`, () => {",
+                  "    pm.expect(body.user.firstName).to.eq(\"555\")",
+                  "});",
+                  "",
+                  "pm.test(`Response body.user.lastName have value: '${lastName}'`, () => {",
+                  "    pm.expect(body.user.lastName).to.eq(lastName)",
+                  "});",
+                  "",
+                  "pm.test(`Response body.user.age have value: '${age}'`, () => {",
+                  "    pm.expect(body.user.age ).to.eq(age)",
+                  "});",
+                  ""
+                ],
+                "_lastExecutionId": "65fa803b-8cff-4868-afe0-358b34484895"
+              }
+            }
+          ]
+        },
+        "parent": {
+          "_": {
+            "postman_id": "ba28c079-0da5-4974-869c-520918053750",
+            "exporter_id": "18237009",
+            "collection_link": "https://prednasky.postman.co/workspace/Newman-Course~f4274440-adbb-4ada-adce-8caf96c3fb61/collection/18237009-ba28c079-0da5-4974-869c-520918053750?action=share&source=collection_link&creator=18237009"
+          },
+          "item": [
+            {
+              "id": "1c5fbeb6-556d-4643-9b5d-3326ebf23575",
+              "name": "Training POST - invalid URL",
+              "request": {
+                "description": {
+                  "content": "Generated from cURL: curl --location --request POST 'https://tegb-backend-877a0b063d29.herokuapp.comtrain'",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "trai"
+                  ],
+                  "host": [
+                    "tegb-backend-877a0b063d29",
+                    "herokuapp",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "548cd029-d41b-4f62-91ec-d5596e321955",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "2556918e-b7a8-4864-aa91-8bfea27fc266"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "f378e473-62ad-423c-be13-00cb06339310",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "ffd9f8cf-8dc4-4088-97b7-61a2a6a81c21"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "8761ce55-e765-4514-a785-76e86a248b37",
+              "name": "Training POST - syntax error in tests",
+              "request": {
+                "description": {
+                  "content": "Generated from cURL: curl --location --request POST 'https://tegb-backend-877a0b063d29.herokuapp.comtrain'",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "train"
+                  ],
+                  "host": [
+                    "tegb-backend-877a0b063d29",
+                    "herokuapp",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "df36f90a-dfe4-429d-83ee-d6ec165a0955",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "const body = pm.response.json();",
+                      "",
+                      "pm.test(\"Response status is 201\", () => ",
+                      "    pm.response.to.have.status(201);",
+                      "});",
+                      "",
+                      "pm.test(\"Response body have properties\", () => {",
+                      "    pm.expect(body).to.haveOwnProperty(\"id\");",
+                      "    pm.expect(body).to.haveOwnProperty(\"message\");",
+                      "    pm.expect(body).to.haveOwnProperty(\"timestamp\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.id is number\", () => {",
+                      "    pm.expect(body.id).to.be.a(\"number\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.message is string\", () => {",
+                      "    pm.expect(body.message).to.be.a(\"string\");",
+                      "})",
+                      "",
+                      "",
+                      "pm.test(\"Response body.timestamp is string\", () => {",
+                      "    pm.expect(body.timestamp).to.be.a(\"string\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.id is 1\", () => {",
+                      "    pm.expect(body.id).to.eq(1);",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.message have correct value\", () => {",
+                      "    const expectedText = \"TEG#B Training POST request successful\";",
+                      "    pm.expect(body.message).to.eq(expectedText)",
+                      "});",
+                      ""
+                    ],
+                    "_lastExecutionId": "b906c7e1-9155-42ad-8923-abbedcf65da2"
+                  }
+                },
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "199f49fe-cade-4810-8e8f-3083e0af496d",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "ddd45fc6-e41c-432b-8d8c-a3e67684c1b7"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "4e571d12-2a5a-46b4-a961-7b5dc4f23413",
+              "name": "ENOTFOUND error - wrong url",
+              "request": {
+                "description": {
+                  "content": "Generated from cURL: curl --location 'https://tegb-backend-877a0b063d29.herokuapp.com/train/header' \\\n--header 'train: Testujeme v Playwright'",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "host": [
+                    "fafafafa"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "train",
+                    "value": "{{reqHeader}}"
+                  }
+                ],
+                "method": "GET"
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "fefe5e84-5e47-4ea4-b833-d054a42a8b87",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "pm.variables.set(\"reqHeader\", \"Testujeme Newman\");"
+                    ],
+                    "_lastExecutionId": "da425d6a-dcc5-4bb0-bf0f-df31b24dacbc"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "ad2e1d14-5f45-40d8-97ac-c65504d70dcd",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      ""
+                    ],
+                    "_lastExecutionId": "dee367ae-9417-401d-b09e-edb824dbab69"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "195cba14-8d39-4cfc-8f65-6062262580cc",
+              "name": "Failing tests",
+              "request": {
+                "description": {
+                  "content": "Generated from cURL: curl --location 'https://tegb-backend-877a0b063d29.herokuapp.com/auth/register' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"email\": \"luke@example.com\",\n    \"password\": \"heslo1\",\n    \"firstName\": \"Luke\",\n    \"lastName\": \"Skywalker\",\n    \"age\": 25\n}'",
+                  "type": "text/plain"
+                },
+                "url": {
+                  "protocol": "https",
+                  "path": [
+                    "auth",
+                    "register"
+                  ],
+                  "host": [
+                    "tegb-backend-877a0b063d29",
+                    "herokuapp",
+                    "com"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"{{reqEmail}}\",\n    \"password\": \"{{reqPassword}}\",\n    \"firstName\": \"{{reqFirstName}}\",\n    \"lastName\": \"{{reqLastName}}\",\n    \"age\": {{reqAge}}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "d0005819-f000-44e0-9a76-c5e648dbfc3a",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "const randomEmail = pm.variables.replaceIn('{{$randomExampleEmail}}');",
+                      "const randomFirstName = pm.variables.replaceIn('{{$randomFirstName}}');",
+                      "const randomLastName = pm.variables.replaceIn('{{$randomLastName}}');",
+                      "",
+                      "pm.variables.set(\"reqFirstName\", randomFirstName);",
+                      "pm.variables.set(\"reqLastName\", randomLastName);",
+                      "pm.variables.set(\"reqEmail\", randomEmail);",
+                      "pm.variables.set(\"reqPassword\", \"Heslo1234\");",
+                      "pm.variables.set(\"reqAge\", 33);",
+                      ""
+                    ],
+                    "_lastExecutionId": "947e223f-10ba-4897-926c-da7012964141"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "4b4aed13-def0-49bb-9bc6-5435a1c1e7c7",
+                    "type": "text/javascript",
+                    "packages": {},
+                    "exec": [
+                      "const firstName = pm.variables.get(\"reqFirstName\");",
+                      "const lastName = pm.variables.get(\"reqLastName\");",
+                      "const email = pm.variables.get(\"reqEmail\");",
+                      "const age = pm.variables.get(\"reqAge\");",
+                      "const body = pm.response.json();",
+                      "",
+                      "pm.test(\"Response status is 200\", () => {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"Response body have properties\", () => {",
+                      "    pm.expect(body).to.haveOwnProperty(\"message\");",
+                      "    pm.expect(body).to.haveOwnProperty(\"user\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"email\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"firstName\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"lastName\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"age\");",
+                      "    pm.expect(body.user).to.haveOwnProperty(\"id\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.message is string\", () => {",
+                      "    pm.expect(body.message).to.be.a(\"string\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.user is object\", () => {",
+                      "    pm.expect(body.user).to.be.a(\"object\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.user.email is string\", () => {",
+                      "    pm.expect(body.user.email).to.be.a(\"string\");",
+                      "});",
+                      "",
+                      "pm.test(\"Response body.user.firstName is string\", () => {",
+                      "    pm.expect(body.user.firstName).to.be.a(\"string\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.user.lastName is string\", () => {",
+                      "    pm.expect(body.user.lastName).to.be.a(\"boolean\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.user.age is number\", () => {",
+                      "    pm.expect(body.user.age).to.be.a(\"number\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.user.id is number\", () => {",
+                      "    pm.expect(body.user.id).to.be.a(\"number\");",
+                      "})",
+                      "",
+                      "pm.test(\"Response body.id message have correct text\", () => {",
+                      "    const expectedText = \"User registered\";",
+                      "    pm.expect(body.message).to.eq(expectedText)",
+                      "});",
+                      "",
+                      "pm.test(`Response body.user.email have value: '${email}'`, () => {",
+                      "    pm.expect(body.user.email).to.eq(email)",
+                      "});",
+                      "",
+                      "pm.test(`Response body.user.firstName have value: '${firstName}'`, () => {",
+                      "    pm.expect(body.user.firstName).to.eq(\"555\")",
+                      "});",
+                      "",
+                      "pm.test(`Response body.user.lastName have value: '${lastName}'`, () => {",
+                      "    pm.expect(body.user.lastName).to.eq(lastName)",
+                      "});",
+                      "",
+                      "pm.test(`Response body.user.age have value: '${age}'`, () => {",
+                      "    pm.expect(body.user.age ).to.eq(age)",
+                      "});",
+                      ""
+                    ],
+                    "_lastExecutionId": "65fa803b-8cff-4868-afe0-358b34484895"
+                  }
+                }
+              ]
+            }
+          ],
+          "event": [],
+          "variable": [],
+          "info": {
+            "_postman_id": "ba28c079-0da5-4974-869c-520918053750",
+            "name": "Newman Failing Tests",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+          }
+        },
+        "cursor": {
+          "ref": "aa8f3517-236c-41a9-aa3a-970e15edcd55",
+          "length": 4,
+          "cycles": 1,
+          "position": 3,
+          "iteration": 0,
+          "httpRequestId": "ee0b2d07-e7e0-4421-b8da-512009cd670e",
+          "scriptId": "4b4aed13-def0-49bb-9bc6-5435a1c1e7c7",
+          "execution": "65fa803b-8cff-4868-afe0-358b34484895"
+        }
+      }
+    ],
+    "error": null
+  }
+}
