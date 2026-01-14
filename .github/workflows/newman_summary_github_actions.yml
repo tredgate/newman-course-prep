@@ -41,20 +41,20 @@ jobs:
             
             // Funkce pro určení emoji podle stavu
             function getEmoji(stat) {
-              if (stat.pending > 0) return "🟠";
-              if (stat.failed > 0) return "🔴";
-              return "🟢";
+              if (stat.pending > 0) return "↩️";
+              if (stat.failed > 0) return "❌";
+              return "✅";
             }
             
             // Vytvoření markdown tabulky
             let summary = "## Newman Test Summary\n\n";
-            summary += "| | Executed | Failed |\n";
-            summary += "|---|---|---|\n";
-            summary += `| ${getEmoji(stats.iterations)} iterations | ${stats.iterations.total} | ${stats.iterations.failed} |\n`;
-            summary += `| ${getEmoji(stats.requests)} requests | ${stats.requests.total} | ${stats.requests.failed} |\n`;
-            summary += `| ${getEmoji(stats.testScripts)} test-scripts | ${stats.testScripts.total} | ${stats.testScripts.failed} |\n`;
-            summary += `| ${getEmoji(stats.prerequestScripts)} prerequest-scripts | ${stats.prerequestScripts.total} | ${stats.prerequestScripts.failed} |\n`;
-            summary += `| ${getEmoji(stats.assertions)} assertions | ${stats.assertions.total} | ${stats.assertions.failed} |\n`;
+            summary += "| | | Executed | Failed |\n";
+            summary += "|---|---|---|---|\n";
+            summary += `|  ${getEmoji(stats.iterations)} | iterations | ${stats.iterations.total} | ${stats.iterations.failed} |\n`;
+            summary += `|  ${getEmoji(stats.requests)} | requests | ${stats.requests.total} | ${stats.requests.failed} |\n`;
+            summary += `|  ${getEmoji(stats.testScripts)} | test-scripts | ${stats.testScripts.total} | ${stats.testScripts.failed} |\n`;
+            summary += `| ${getEmoji(stats.prerequestScripts)} | prerequest-scripts | ${stats.prerequestScripts.total} | ${stats.prerequestScripts.failed} |\n`;
+            summary += `| ${getEmoji(stats.assertions)} | assertions | ${stats.assertions.total} | ${stats.assertions.failed} |\n`;
             
             // Přidání časových informací
             const duration = timings.completed - timings.started;
